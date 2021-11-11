@@ -37,5 +37,8 @@ module.exports = {
 
   //입금/출금 성공
   DEPOSIT_SUCCESS: "입금 성공",
-  WITHDRAW_SUCCESS : "출금 성공"
+  WITHDRAW_SUCCESS : "출금 성공",
+
+  // account
+  ACCOUNT_CREATED: "계좌 생성 성공",
 };

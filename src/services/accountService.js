@@ -3,7 +3,7 @@ const logger = require('../utils/logger');
 
 
 //계좌생성
-//data.userId
+//data.username
 //data.password
 //data.salt
 exports.createAccount = async (data) => {

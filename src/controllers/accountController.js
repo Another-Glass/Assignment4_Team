@@ -5,36 +5,30 @@ const userService = require('../services/userService.js');
 const { DuplicatedError } = require('../utils/errors/userError');
 const encryption = require('../libs/encryption.js');
 const logger = require('../utils/logger');
+const ValidationError = require('../utils/errors/commonError');
+const encryption = require('../libs/encryption');
 
   //계좌생성
 exports.postAccount = async(req, res, next) => {
-  try {
-    const { accountPassword } = req.body;
-    const { userId } = req.decoded;
+  const { accountPassword } = req.body;
+  const { id } = req.decoded;
 
-    logger.log(req.body);
-    //입력값 확인
-    if (userId === undefined || accountPassword === undefined) {
-      throw new ValidationError();
-    }
-
-    //암호화
-    const salt = encryption.makeSalt();
-    const encryptPassword = encryption.encrypt(accountPassword, salt);
-
-    const data = {
-      userId:userId,
-      password:encryptPassword,
-      salt:salt
-    }
-    //쿼리실행
-    let account = await accountService.createAccount(data);
-    console.log(account);
-
-    return res.status(statusCode.CREATED)
-      .send(resFormatter.success(responseMessage.CREATED_USER, account));
-  } catch (err) {
-    next(err);
+  if(accountPassword === undefined || id === undefined) {
+    throw new ValidationError()
   }
+  
+  const salt = encryption.makeSalt();
+  const encryptPassword = encryption.encrypt(accountPassword, salt);
+  
+  const dto = {
+    id, 
+    password: encryptPassword,
+    salt
+  }
+
+  const newAccount = await accountService.createAccount(dto)
+  return res
+        .status(statusCode.CREATED)
+        .send(resFormatter.success(responseMessage.ACCOUNT_CREATED, newAccount))
 }
   

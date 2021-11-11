@@ -10,13 +10,11 @@ const TOKEN_INVALID = -2;
 
 const COOKIE_TOKEN_FEILD = 'AG3_JWT'
 
-
-
-
 //토큰 확인
 exports.checkToken = async (req, res, next) => {
     //const authorization = req.headers.authorization;
     const authorization = req.cookies[COOKIE_TOKEN_FEILD]
+
     //토큰이 없는경우
     if (!authorization) {
         return res.status(statusCode.UNAUTHORIZED)
@@ -31,13 +29,13 @@ exports.checkToken = async (req, res, next) => {
         return res.status(statusCode.UNAUTHORIZED)
             .send(util.fail(responseMessage.EXPIRED_TOKEN));
     }
-
+    
     //토큰 무효되는 경우
     if (user === TOKEN_INVALID) {
         return res.status(statusCode.UNAUTHORIZED)
             .send(util.fail(responseMessage.INVALID_TOKEN));
     }
-    if (user.username === undefined) {
+    if (user.id === undefined) {
         return res.status(statusCode.UNAUTHORIZED)
             .send(util.fail(responseMessage.INVALID_TOKEN));
     }

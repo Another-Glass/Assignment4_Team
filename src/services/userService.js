@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const { Op } = require('sequelize');
 const models = require('../models');
 
 /**
@@ -23,7 +23,7 @@ exports.signup = async (id, encryptPassword, salt) => {
 };
 
 /**
- * 이메일 체크 서비스
+ * 유저 체크 서비스
  * @param {String} id
  * @returns {Object} 이미 존재하는 유저 정보 { username, domain, password, isAdmin, salt, refreshToken, createdAt, updatedAt }
  */
@@ -47,8 +47,10 @@ exports.checkUser = async id => {
 exports.signin = async (id, password) => {
   try {
     const user = await models.user.findOne({
-      id,
-      password,
+      where: {
+        id,
+        password,
+      },
     });
 
     return user;

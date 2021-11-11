@@ -8,7 +8,7 @@ const accountRouter = express.Router();
 
 const {checkToken} = require("../middlewares/auth");
 
-//유저생성
+//계좌 생성
 accountRouter.post(routes.root, checkToken, accountController.postAccount);
 
 //입출금
