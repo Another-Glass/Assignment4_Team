@@ -3,15 +3,15 @@ const models = require('../models');
 
 /**
  * 회원가입 서비스
- * @param {String} id
+ * @param {String} userId
  * @param {String} encryptPassword
  * @param {String} salt
  * @returns {Object} 가입한 유저 정보 { userId, password, salt }
  */
-exports.signup = async (id, encryptPassword, salt) => {
+exports.signup = async (userId, encryptPassword, salt) => {
   try {
     const newUser = await models.user.create({
-      id,
+      id:userId,
       password: encryptPassword,
       salt,
       isAdmin,
@@ -24,13 +24,15 @@ exports.signup = async (id, encryptPassword, salt) => {
 
 /**
  * 유저 체크 서비스
- * @param {String} id
+ * @param {String} userId
  * @returns {Object} 이미 존재하는 유저 정보 { username, domain, password, isAdmin, salt, refreshToken, createdAt, updatedAt }
  */
-exports.checkUser = async id => {
+exports.checkUser = async userId => {
   try {
     const alreadyUser = await models.user.findOne({
-      id,
+      where:{
+        id:userId,
+      }
     });
     return alreadyUser;
   } catch (err) {
@@ -40,15 +42,15 @@ exports.checkUser = async id => {
 
 /**
  * 로그인 서비스
- * @param {String} id
+ * @param {String} userId
  * @param {String} password
  * @returns {Object} 로그인한 유저 정보 { id, password, salt }
  */
-exports.signin = async (id, password) => {
+exports.signin = async (userId, password) => {
   try {
     const user = await models.user.findOne({
       where: {
-        id,
+        id:userId,
         password,
       },
     });

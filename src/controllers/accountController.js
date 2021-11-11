@@ -11,9 +11,9 @@ const encryption = require('../libs/encryption');
   //계좌생성
 exports.postAccount = async(req, res, next) => {
   const { accountPassword } = req.body;
-  const { id } = req.decoded;
+  const { userId } = req.decoded;
 
-  if(accountPassword === undefined || id === undefined) {
+  if(accountPassword === undefined || userId === undefined) {
     throw new ValidationError()
   }
   
@@ -21,7 +21,7 @@ exports.postAccount = async(req, res, next) => {
   const encryptPassword = encryption.encrypt(accountPassword, salt);
   
   const dto = {
-    id, 
+    userId, 
     password: encryptPassword,
     salt
   }

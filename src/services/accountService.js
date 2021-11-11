@@ -3,7 +3,7 @@ const logger = require('../utils/logger');
 
 
 //계좌생성
-//data.username
+//data.userId
 //data.password
 //data.salt
 exports.createAccount = async (data) => {
@@ -21,14 +21,14 @@ exports.createAccount = async (data) => {
 
 
 //계좌 기본정보 조회
-//data.accountId
+//data.accountNumber
 //return {password, salt}
 exports.readAccountPassword = async (data) => {
 
 }
 
 //계좌 잔고 조회
-//data.accountId
+//data.accountNumber
 exports.readAccountBalance = async (data) => {
 
 }

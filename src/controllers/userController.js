@@ -16,15 +16,15 @@ const logger = require('../utils/logger');
 //회원가입
 exports.postUser = async (req, res, next) => {
   try {
-    const { id, password } = req.body;
+    const { userId, password } = req.body;
 
     //입력값 확인
-    if (id === undefined || password === undefined) {
+    if (userId === undefined || password === undefined) {
       throw new ValidationError();
     }
 
     //이름 중복 여부
-    const isExists = await userService.checkUser(id);
+    const isExists = await userService.checkUser(userId);
     if (isExists) throw new DuplicatedError();
 
     //암호화
@@ -32,7 +32,7 @@ exports.postUser = async (req, res, next) => {
     const encryptPassword = encryption.encrypt(password, salt);
 
     //쿼리실행
-    await userService.signup(id, encryptPassword, salt);
+    await userService.signup(userId, encryptPassword, salt);
 
     return res
       .status(statusCode.CREATED)
@@ -45,13 +45,13 @@ exports.postUser = async (req, res, next) => {
 //토큰 생성(로그인)
 exports.postToken = async (req, res, next) => {
   try {
-    const { id, password } = req.body;
+    const { userId, password } = req.body;
 
     //입력값 확인
-    if (id === undefined || password === undefined) throw new ValidationError();
+    if (userId === undefined || password === undefined) throw new ValidationError();
 
     //회원가입 여부 확인
-    const isUser = await userService.checkUser(id);
+    const isUser = await userService.checkUser(userId);
     if (!isUser) throw new NotMatchedUserError();
 
     //확인용 암호화
@@ -62,7 +62,7 @@ exports.postToken = async (req, res, next) => {
     if (inputPassword !== realPassword) throw new PasswordMissMatchError();
 
     //쿼리 실행
-    const user = await userService.signin(id, inputPassword);
+    const user = await userService.signin(userId, inputPassword);
 
     //토큰 반환
 
