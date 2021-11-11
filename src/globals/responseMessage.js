@@ -35,9 +35,10 @@ module.exports = {
   NO_USER: '존재하지 않는 회원입니다.',
   MISS_MATCH_PW: '비밀번호가 맞지 않습니다.',
 
-  //입금/출금 성공
+  //입금/출금
   DEPOSIT_SUCCESS: "입금 성공",
   WITHDRAW_SUCCESS : "출금 성공",
+  NOT_ENOUGH_BALANCE : "잔액이 부족합니다",
 
   // account
   ACCOUNT_CREATED: "계좌 생성 성공",

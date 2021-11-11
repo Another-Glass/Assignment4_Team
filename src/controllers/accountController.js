@@ -6,7 +6,6 @@ const { DuplicatedError } = require('../utils/errors/userError');
 const encryption = require('../libs/encryption.js');
 const logger = require('../utils/logger');
 const ValidationError = require('../utils/errors/commonError');
-const encryption = require('../libs/encryption');
 
   //계좌생성
 exports.postAccount = async(req, res, next) => {
@@ -29,6 +28,6 @@ exports.postAccount = async(req, res, next) => {
   const newAccount = await accountService.createAccount(dto)
   return res
         .status(statusCode.CREATED)
-        .send(resFormatter.success(responseMessage.ACCOUNT_CREATED, newAccount))
+        .send(resFormatter.success(responseMessage.ACCOUNT_CREATED, {accountNumber:newAccount.accountNumber}))
 }
   
