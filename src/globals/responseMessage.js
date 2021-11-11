@@ -33,4 +33,7 @@ module.exports = {
   LOGOUT_SUCCESS: '로그아웃 성공',
   NO_USER: '존재하지 않는 회원입니다.',
   MISS_MATCH_PW: '비밀번호가 맞지 않습니다.',
+
+  // account
+  ACCOUNT_CREATED: "계좌 생성 성공"
 };

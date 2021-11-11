@@ -3,10 +3,20 @@ const logger = require('../utils/logger');
 
 
 //계좌생성
-//data.userId
+//data.username
 //data.password
 //data.salt
 exports.createAccount = async (data) => {
+  try {
+    const newAccount = await models.account.create({
+      username: data.username,
+      password: data.password,
+      salt: data.salt  
+    })
+    return newAccount;
+  } catch (err) {
+
+  }
 }
 
 
