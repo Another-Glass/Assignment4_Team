@@ -1,6 +1,9 @@
 const { statusCode, responseMessage } = require('../globals');
 const { resFormatter } = require('../utils');
 const accountService = require('../services/accountService.js');
+const userService = require('../services/userService.js');
+const { DuplicatedError } = require('../utils/errors/userError');
+const encryption = require('../libs/encryption.js');
 const logger = require('../utils/logger');
 const ValidationError = require('../utils/errors/commonError');
 const encryption = require('../libs/encryption');
@@ -8,9 +11,9 @@ const encryption = require('../libs/encryption');
   //계좌생성
 exports.postAccount = async(req, res, next) => {
   const { accountPassword } = req.body;
-  const { id } = req.decoded;
+  const { userId } = req.decoded;
 
-  if(accountPassword === undefined || id === undefined) {
+  if(accountPassword === undefined || userId === undefined) {
     throw new ValidationError()
   }
   
@@ -18,7 +21,7 @@ exports.postAccount = async(req, res, next) => {
   const encryptPassword = encryption.encrypt(accountPassword, salt);
   
   const dto = {
-    id, 
+    userId, 
     password: encryptPassword,
     salt
   }

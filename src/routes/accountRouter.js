@@ -3,17 +3,18 @@ const routes = require('../globals/routes');
 
 const accountController = require('../controllers/accountController.js');
 const transactionController = require('../controllers/transactionController.js');
-const auth = require('../middlewares/auth');
 
 const accountRouter = express.Router();
 
+const {checkToken} = require("../middlewares/auth");
+
 //계좌 생성
-accountRouter.post(routes.root, auth.checkToken, accountController.postAccount);
+accountRouter.post(routes.root, checkToken, accountController.postAccount);
 
-//로그인
-accountRouter.post(routes.accountDetail+routes.transaction, transactionController.postTransaction);
+//입출금
+accountRouter.post(routes.accountDetail+routes.transaction, checkToken, transactionController.postTransaction);
 
-//로그인
-accountRouter.get(routes.accountDetail+routes.transaction, transactionController.getTransaction);
+//입출금 내역조회
+accountRouter.get(routes.accountDetail+routes.transaction, checkToken, transactionController.getTransaction);
 
 module.exports = accountRouter;
