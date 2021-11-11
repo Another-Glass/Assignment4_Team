@@ -17,5 +17,13 @@ module.exports = {
     else {
       console.error(msg);
     }
-  }
+  },
+  logWithTag: (msg, tag) => {
+    if (process.env.DEBUG) {
+      debug(tag)(msg);
+    }
+    else {
+      console.log(msg);
+    }
+  },
 };

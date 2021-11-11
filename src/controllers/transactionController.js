@@ -18,31 +18,42 @@ exports.postTransaction = async (req, res, next) => {
         const accountNumber = req.params.accountNumber;
         const { type, transactionAmount, briefs, accountPassword } = req.body;
 
-        // 소유주가 아니면 에러처리
-        if (userId === undefined) throw new UnAuthorizedError();
+        //계좌 비밀번호 대조
+        //accountPassword
 
-        // 입력값이 하나라도 없으면 에러처리 NULL_VALUE : 400
+        // 소유주가 아니면 에러처리
+        if (userId === undefined) 
+            throw new UnAuthorizedError();
+
         if (type === undefined || transactionAmount === undefined || briefs === undefined
             || accountPassword === undefined || accountNumber === undefined)
-            throw new ValidationError()
+            throw new ValidationError();
 
-        let message;
+        //type을 db상의 type으로 타입변경 및 리턴값 사전처리
+        let resMessage;
+        let rawType = 0;
         switch (type) {
-            case 0: message = responseMessage.DEPOSIT_SUCCESS; break;
-            case 1: message = responseMessage.WITHDRAW_SUCCESS; break;
+            case "deposit": resMessage = responseMessage.DEPOSIT_SUCCESS; rawType = 0; break;
+            case "withdraw": resMessage = responseMessage.WITHDRAW_SUCCESS; rawType = 1;  break;
             default: throw new ValidationError();
         }
 
-        // 계좌DB가 없으면 에러처리 ENTITY_NOT_EXIST 404
-        const account = await accountService.findAccountByAccountId({ accountNumber: accountNumber })
-        if (account === undefined) throw new EntityNotExistError();
+        const account = await accountService.findAccountByPk({ accountNumber })
+        if (account === undefined) 
+            throw new EntityNotExistError();
 
-        //입출금 실행
-        const transaction = await transactionService.createTransaction()
+        const transactionData = {
+            accountNumber,
+            transactionAmount,
+            briefs,
+            accountPassword,
+            type:rawType,
+        }
+        const newTransaction = await transactionService.createTransaction(transactionData)
 
 
         return res.status(statusCode.OK)
-            .send(resFormatter.success(message, transaction));
+            .send(resFormatter.success(resMessage, { balance:newTransaction.balance }));
     }
     catch (err) {
         next(err);

@@ -1,72 +1,9 @@
 const { ValidationError } = require('sequelize/lib/errors');
 const models = require('../models');
+const { NotEnoughBalanceError } = require('../utils/errors/transactionError');
 const logger = require('../utils/logger');
-const { readAccountBalance } = require('./accountService');
-
-//입금 시도
-async function tryDeposit(data){
-  logger.log("deposit");
-  let balance = await readAccountBalance({
-    accountNumber: data.accountNumber
-  });
-  logger.log("before balance : "+balance);
-
-  updateResult = await updateAccountBalance({
-    accountNumber: data.accountNumber, 
-    balance: balance + data.transactionAmount,
-  });
-  logger.log("update Result : "+updateResult);
-
-  balance = balance + data.transactionAmount;
-
-  let transaction = await models.transaction({
-    transactionAmount: data.transactionAmount,
-    briefs: data.briefs,
-    transactionType: data.transactionType,
-    balance: balance
-  }, {raw:true});
-  logger.log("transaction : "+transaction);
-
-  return transaction;
-}
-
-
-//출금 시도
-async function tryWithdraw(data){
-  try{
-    logger.log("withdraw");
-    let balance = await readAccountBalance({
-      accountNumber:data.accountNumber
-    });
-    logger.log("before balance : "+balance);
-
-    if(data.transactionAmount > balance){
-      throw new NOT_ENOUGH_BALANCE_ERROR();
-    }
-
-    let updateResult = await updateAccountBalance({
-      accountNumber:data.accountNumber, 
-      balance: balance - data.transactionAmount,
-    });
-    logger.log("update Result : "+updateResult);
-
-    balance = balance - data.transactionAmount;
-
-    let transaction = await models.transaction({
-      transactionAmount: data.transactionAmount,
-      briefs: data.briefs,
-      transactionType: data.transactionType,
-      balance: balance
-    }, {raw:true});
-    logger.log("transaction : "+transaction);
-
-    return transaction;
-  }catch(err){
-    throw err;
-  }
-}
-
-
+const { readAccountBalance, updateAccountBalance } = require('./accountService');
+const logTag = 'src:transaction';
 
 //거래내역생성
 //data.accountNumber
@@ -74,9 +11,10 @@ async function tryWithdraw(data){
 //data.transactionAmount
 //data.briefs
 exports.createTransaction = async (data) => {
+  const t = await models.sequelize.transaction();
+
   try{
-    logger.log("createTransaction data: "+data);
-    const t = await sequelize.transaction();
+    //log logger.logWithTag("createTransaction data: "+JSON.stringify(data), logTag);
 
     let transaction;
     switch(data.type){
@@ -105,4 +43,71 @@ exports.createTransaction = async (data) => {
 //data.type    //조건들은 undefined로 들어올 수 있음
 exports.readTransactionList = async (data) => {
 
+}
+
+
+//입금 시도
+async function tryDeposit(data){
+  try{
+    //log logger.logWithTag("deposit", logTag);
+    let balance = await readAccountBalance({
+      accountNumber: data.accountNumber
+    });
+    //log logger.logWithTag("before balance : "+balance, logTag);
+
+    updateResult = await updateAccountBalance({
+      accountNumber: data.accountNumber, 
+      balance: balance + data.transactionAmount,
+    });
+    //log logger.logWithTag("update Result : "+updateResult, logTag);
+
+    balance = balance + data.transactionAmount;
+
+    let transaction = await models.transaction.create({
+      transactionAmount: data.transactionAmount,
+      briefs: data.briefs,
+      transactionType: data.type,
+      balance: balance
+    }, {raw:true});
+    //log logger.logWithTag("transaction : "+transaction, logTag);
+
+    return transaction;
+  }catch(err){
+    throw err;
+  }
+}
+
+//출금 시도
+async function tryWithdraw(data){
+  try{
+    //log logger.logWithTag("withdraw", logTag);
+    let balance = await readAccountBalance({
+      accountNumber:data.accountNumber
+    });
+    //log logger.logWithTag("before balance : "+balance, logTag);
+
+    if(data.transactionAmount > balance){
+      throw new NotEnoughBalanceError();
+    }
+
+    let updateResult = await updateAccountBalance({
+      accountNumber:data.accountNumber, 
+      balance: balance - data.transactionAmount,
+    });
+    //log logger.logWithTag("update Result : "+updateResult, logTag);
+
+    balance = balance - data.transactionAmount;
+
+    let transaction = await models.transaction.create({
+      transactionAmount: data.transactionAmount,
+      briefs: data.briefs,
+      transactionType: data.type,
+      balance: balance
+    }, {raw:true});
+    //log //log logger.logWithTag("transaction : "+transaction, logTag);
+
+    return transaction;
+  }catch(err){
+    throw err;
+  }
 }

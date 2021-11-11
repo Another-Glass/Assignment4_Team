@@ -35,7 +35,7 @@ exports.checkToken = async (req, res, next) => {
         return res.status(statusCode.UNAUTHORIZED)
             .send(util.fail(responseMessage.INVALID_TOKEN));
     }
-    if (user.id === undefined) {
+    if (user.userId === undefined) {
         return res.status(statusCode.UNAUTHORIZED)
             .send(util.fail(responseMessage.INVALID_TOKEN));
     }
