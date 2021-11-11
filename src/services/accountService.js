@@ -9,13 +9,13 @@ const logger = require('../utils/logger');
 exports.createAccount = async (data) => {
   try {
     const newAccount = await models.account.create({
-      username: data.username,
+      userId: data.id,
       password: data.password,
       salt: data.salt  
     })
     return newAccount;
   } catch (err) {
-
+    throw (err);
   }
 }
 

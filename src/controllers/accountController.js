@@ -8,9 +8,9 @@ const encryption = require('../libs/encryption');
   //계좌생성
 exports.postAccount = async(req, res, next) => {
   const { accountPassword } = req.body;
-  const { username } = req.decoded;
+  const { id } = req.decoded;
 
-  if(accountPassword === undefined || username === undefined) {
+  if(accountPassword === undefined || id === undefined) {
     throw new ValidationError()
   }
   
@@ -18,13 +18,12 @@ exports.postAccount = async(req, res, next) => {
   const encryptPassword = encryption.encrypt(accountPassword, salt);
   
   const dto = {
-    username, 
+    id, 
     password: encryptPassword,
     salt
   }
 
   const newAccount = await accountService.createAccount(dto)
-  
   return res
         .status(statusCode.CREATED)
         .send(resFormatter.success(responseMessage.ACCOUNT_CREATED, newAccount))
