@@ -13,7 +13,7 @@ exports.signup = async (id, encryptPassword, salt) => {
     const newUser = await models.user.create({
       id,
       password: encryptPassword,
-      salt
+      salt,
     });
     return newUser;
   } catch (err) {
@@ -26,10 +26,10 @@ exports.signup = async (id, encryptPassword, salt) => {
  * @param {String} username
  * @returns {Object} 이미 존재하는 유저 정보 { username, domain, password, isAdmin, salt, refreshToken, createdAt, updatedAt }
  */
-exports.checkUser = async (id) => {
+exports.checkUser = async id => {
   try {
     const alreadyUser = await models.user.findOne({
-      id
+      id,
     });
     return alreadyUser;
   } catch (err) {
@@ -39,18 +39,18 @@ exports.checkUser = async (id) => {
 
 /**
  * 로그인 서비스
- * @param {String} username 
+ * @param {String} id
  * @param {String} password
- * @returns {Object} 로그인한 유저 정보 { username, domain, password, isAdmin, salt, refreshToken, createdAt, updatedAt }
+ * @returns {Object} 로그인한 유저 정보 { id, password, salt }
  */
-exports.signin = async (username, password) => {
+exports.signin = async (id, password) => {
   try {
     const user = await models.user.findOne({
-      username: username,
+      id: id,
       password: password,
     });
-    
-    return user
+
+    return user;
   } catch (err) {
     throw err;
   }
