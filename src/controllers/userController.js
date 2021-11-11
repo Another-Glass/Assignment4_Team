@@ -13,15 +13,15 @@ const logger = require('../utils/logger');
 //회원가입
 exports.postUser = async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { id, password } = req.body;
 
     //입력값 확인
-    if (username === undefined || password === undefined) {
+    if (id === undefined || password === undefined) {
       throw new ValidationError();
     }
 
-    //이메일 중복 여부
-    const isExists = await userService.checkUser(username);
+    //이름 중복 여부
+    const isExists = await userService.checkUser(id);
     if (isExists) throw new DuplicatedError()
 
     //암호화
@@ -29,7 +29,7 @@ exports.postUser = async (req, res, next) => {
     const encryptPassword = encryption.encrypt(password, salt);
 
     //쿼리실행
-    await userService.signup(username, encryptPassword, salt);
+    await userService.signup(id, encryptPassword, salt);
 
     return res.status(statusCode.CREATED)
       .send(resFormatter.success(responseMessage.CREATED_USER));
