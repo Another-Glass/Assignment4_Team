@@ -10,7 +10,7 @@ module.exports = {
     //토큰 생성
     sign: async user => {
         const payload = {
-            username : user.username
+            userId : user.userId
         };
 
         const token = jsonwebtoken.sign(payload, secretKey.secretKey, secretKey.options)

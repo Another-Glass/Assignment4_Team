@@ -1,5 +1,5 @@
+const { Op } = require("sequelize");
 const models = require('../models');
-const logger = require('../utils/logger');
 
 /**
  * 회원가입 서비스
@@ -14,6 +14,7 @@ exports.signup = async (id, encryptPassword, salt) => {
       id,
       password: encryptPassword,
       salt,
+      isAdmin,
     });
     return newUser;
   } catch (err) {

@@ -14,12 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BIGINT, 
       allowNull: false, 
       defaultValue: 0 
+    },
+    salt: {
+      type: DataTypes.STRING, 
+      allowNull: false 
     }
   },{timestamps:false});
 
   account.associate = function (models) {
     models.account.belongsTo(models.user, {
-      foreignKey: 'id'
+      foreignKey: 'userId'
     });
   };
 
