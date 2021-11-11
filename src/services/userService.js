@@ -6,15 +6,14 @@ const logger = require('../utils/logger');
  * @param {String} username
  * @param {String} encryptPassword
  * @param {String} salt
- * @param {Boolean} isAdmin
- * @returns {Object} 가입한 유저 정보 { username, domain, password, isAdmin, salt, refreshToken, createdAt, updatedAt }
+ * @returns {Object} 가입한 유저 정보 { userId, password, salt }
  */
-exports.signup = async (username, encryptPassword, salt) => {
+exports.signup = async (id, encryptPassword, salt) => {
   try {
     const newUser = await models.user.create({
-      username: username,
+      id,
       password: encryptPassword,
-      salt,
+      salt
     });
     return newUser;
   } catch (err) {
@@ -27,10 +26,10 @@ exports.signup = async (username, encryptPassword, salt) => {
  * @param {String} username
  * @returns {Object} 이미 존재하는 유저 정보 { username, domain, password, isAdmin, salt, refreshToken, createdAt, updatedAt }
  */
-exports.checkUser = async (username) => {
+exports.checkUser = async (id) => {
   try {
     const alreadyUser = await models.user.findOne({
-      username: username
+      id
     });
     return alreadyUser;
   } catch (err) {
