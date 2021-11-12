@@ -51,11 +51,4 @@ describe('postTransaction 단위 테스트', () => {
     await transactionController.postTransaction(req, res, next);
     expect(accountService.readAccountPassword).toBeCalled()
   })
-  
-  it("transactionController의 postTransaction에서 입력값이 제대로 들어오지 않는 경우 에러를 호출하는가?", async () => {
-    const errorMessage = new ValidationError();
-    accountService.readAccountPassword.mockResolvedValue(true);
-    await transactionController.postTransaction(req, res, next);
-    expect(next).toBeCalledWith(errorMessage);
-  })
 })
