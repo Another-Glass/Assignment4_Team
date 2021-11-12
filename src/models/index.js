@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const Sequelize = require('sequelize');
 const configs = require('../configs');
 const logger = require('../utils/logger');
@@ -5,7 +7,10 @@ const fs = require('fs');
 const path = require('path');
 const basename = path.basename(__filename);
 
-const IS_SQLLITE = false;
+const IS_SQLLITE = process.env.IS_SQLLITE;
+
+
+
 
 let sequelize;
 if (IS_SQLLITE) {
