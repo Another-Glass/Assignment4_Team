@@ -8,14 +8,13 @@ const basename = path.basename(__filename);
 const IS_SQLLITE = true;
 
 let sequelize;
-if(IS_SQLLITE){
+if (IS_SQLLITE) {
   sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './database.db',
     logging: true,
   });
-}
-else{
+} else {
   sequelize = new Sequelize(
     configs.db.dbDATABASE,
     configs.db.dbUSERNAME,
@@ -44,7 +43,6 @@ fs.readdirSync(__dirname)
     modules[model.name] = model;
   });
 
-
 Object.keys(modules).forEach(modelName => {
   if (modules[modelName].associate) {
     modules[modelName].associate(modules);
@@ -54,10 +52,15 @@ Object.keys(modules).forEach(modelName => {
 modules.sequelize = sequelize;
 modules.Sequelize = Sequelize;
 
-modules.sequelize.sync().then( () => {
-  logger.log('DB connected ...');
-}).catch(err => {
-  logger.log("DB connection failed: " + err);
-});
+if (process.env.NODE_ENV !== 'test') {
+  modules.sequelize
+    .sync()
+    .then(() => {
+      logger.log('DB connected ...');
+    })
+    .catch(err => {
+      logger.log('DB connection failed: ' + err);
+    });
+}
 
 module.exports = modules;

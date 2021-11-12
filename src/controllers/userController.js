@@ -53,7 +53,7 @@ exports.postToken = async (req, res, next) => {
     //회원가입 여부 확인
     const isUser = await userService.checkUser(userId);
     if (!isUser) throw new NotMatchedUserError();
-
+    
     //확인용 암호화
     const { salt, password: realPassword } = isUser;
     const inputPassword = encryption.encrypt(password, salt);
@@ -63,9 +63,8 @@ exports.postToken = async (req, res, next) => {
 
     //쿼리 실행
     const user = await userService.signin(userId, inputPassword);
-
+    
     //토큰 반환
-
     const jwtResult = await jwt.sign(user);
 
     const cookieOption = {
