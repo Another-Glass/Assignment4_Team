@@ -11,7 +11,7 @@ let sequelize;
 if (IS_SQLLITE) {
   sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: './database.db',
+    storage: '../database.db',
     logging: true,
   });
 } else {
