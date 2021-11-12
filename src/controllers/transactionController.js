@@ -91,10 +91,14 @@ exports.getTransaction = async (req, res, next) => {
         };
 
 
-        let dbResolve = await transactionService.readTransactionList(data);
+        let transactionList = await transactionService.readTransactionList(data);
 
-        let lastIndex = dbResolve.lastIndex ?? undefined;
-        //여기부터		
+        let lastIndex = transactionList.lastIndex ?? undefined;
+
+        /* 
+        * 페이지네이션의 최적화를 위해서
+        * 마지막으로 조회한 인덱스를 쿠키로 전달
+        */
         const cookieOption = {
             domain: req.hostname,
             expires: new Date(Date.now + 5 * 60 * 1000)
@@ -104,14 +108,12 @@ exports.getTransaction = async (req, res, next) => {
             res
                 .cookie(COOKIE_TOKEN_FEILD, lastIndex, cookieOption)
                 .status(statusCode.OK)
-                .send(resFormatter.success(responseMessage.TRANSACTIONS_FOUND, dbResolve.results))
+                .send(resFormatter.success(responseMessage.TRANSACTIONS_FOUND, transactionList.results))
         } else {
             res
                 .status(statusCode.OK)
-                .send(resFormatter.success(responseMessage.TRANSACTIONS_FOUND, dbResolve.results))
+                .send(resFormatter.success(responseMessage.TRANSACTIONS_FOUND, transactionList.results))
         }
-
-        //여기까지 쿠키 돌려주는 과정
     }
     catch (err) {
         next(err);

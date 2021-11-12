@@ -24,6 +24,7 @@ exports.postAccount = async (req, res, next) => {
       password: encryptPassword,
       salt
     }
+    
 
     const newAccount = await accountService.createAccount(dto)
     return res
