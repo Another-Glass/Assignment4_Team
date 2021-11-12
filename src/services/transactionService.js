@@ -4,9 +4,8 @@ const models = require('../models');
 const { EntityNotExistError } = require('../utils/errors/commonError');
 const { NotEnoughBalanceError } = require('../utils/errors/transactionError');
 const logger = require('../utils/logger');
-const { readAccountBalance, updateAccountBalance } = require('./accountService');
 const logTag = 'src:transaction';
-const transactions = require('./transactionServicePrepared')
+const transactions = require('./transactionServicePrepared');
 
 //거래내역생성
 //data.accountNumber
@@ -82,7 +81,8 @@ exports.checkAccountExists = async (account) => {
       accountNumber: `"${account}"`
   })
 }
-exports.readTransactionList = async (data) => {
+
+exports.readTransactionList = async (data) => {  
   /*
   *  accountNumber : ,
   *  begin : ,
