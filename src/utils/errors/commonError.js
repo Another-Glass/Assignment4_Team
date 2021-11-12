@@ -30,9 +30,17 @@ class ValidationError extends Error { // 400
     super(message);
     this.status = status;
   }
-};
+}
+
+class InternalServerError extends Error { // 400
+  constructor(message = responseMessage.INTERNAL_SERVER_ERROR , status = statusCode.INTERNAL_SERVER_ERROR) {
+    super(message);
+    this.status = status;
+  }
+}
 
 module.exports.NoPageError = NoPageError;
 module.exports.EntityNotExistError = EntityNotExistError;
 module.exports.UnAuthorizedError = UnAuthorizedError;
 module.exports.ValidationError = ValidationError;
+module.exports.InternalServerError = InternalServerError;
