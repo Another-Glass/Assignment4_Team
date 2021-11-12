@@ -7,6 +7,7 @@ const encryption = require("../libs/encryption.js")
 const { EntityNotExistError, ValidationError, UnAuthorizedError } = require('../utils/errors/commonError');
 const { PasswordMissMatchError } = require('../utils/errors/userError');
 
+const COOKIE_TOKEN_FEILD = 'AG3_LAST_INDEX';
 
 /* "type":"in",
 "transactionAmount":10000,
@@ -69,8 +70,48 @@ exports.postTransaction = async (req, res, next) => {
 //거래내역 조회
 exports.getTransaction = async (req, res, next) => {
     try {
-       
-        
+        let incomeLastIndex = req.cookies[COOKIE_TOKEN_FEILD];
+        const accountNumber = req.params.accountNumber;
+        let { type, order = 'ASC', page = 1, begin, end } = req.query;
+
+        let exists = await transactionService.checkAccountExists(accountNumber)
+        if (!exists) {
+            throw new Error();
+        }
+
+        let data = {
+            accountNumber,
+            type,
+            order: order.toUpperCase(),
+            page,
+            begin,
+            end,
+            lastIndex: incomeLastIndex
+        };
+
+        console.log("data : ", data)
+
+        let dbResolve = await transactionService.readTransactionList(data);
+
+        let lastIndex = dbResolve.lastIndex ?? undefined;
+        //여기부터		
+        const cookieOption = {
+            domain: req.hostname,
+            expires: new Date(Date.now + 5 * 60 * 1000)
+        }
+
+        if (lastIndex) {
+            res
+                .cookie(COOKIE_TOKEN_FEILD, lastIndex, cookieOption)
+                .status(statusCode.OK)
+                .send(resFormatter.success(responseMessage.TRANSACTIONS_FOUND, dbResolve.results))
+        } else {
+            res
+                .status(statusCode.OK)
+                .send(resFormatter.success(responseMessage.TRANSACTIONS_FOUND, dbResolve.results))
+        }
+
+        //여기까지 쿠키 돌려주는 과정
     }
     catch (err) {
         next(err);

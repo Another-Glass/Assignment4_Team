@@ -6,6 +6,7 @@ const { NotEnoughBalanceError } = require('../utils/errors/transactionError');
 const logger = require('../utils/logger');
 const { readAccountBalance, updateAccountBalance } = require('./accountService');
 const logTag = 'src:transaction';
+const transactions = require('./transactionServicePrepared')
 
 //거래내역생성
 //data.accountNumber
@@ -76,13 +77,49 @@ exports.createTransaction = async (data) => {
 }
 
 
-//거래내역조회
-//data.accountNumber
-//data.page
-//data.begin
-//data.end
-//data.order
-//data.type    //조건들은 undefined로 들어올 수 있음
+exports.checkAccountExists = async (account) => {
+  return models.account.count({
+      accountNumber: `"${account}"`
+  })
+}
 exports.readTransactionList = async (data) => {
+  /*
+  *  accountNumber : ,
+  *  begin : ,
+  *  end : ,
+  *  type : ,
+  *  order : ,
+  *  page : ,
+  *  lastIndex : ,
+  */
+  return new Promise(async (resolve, reject) => {
+
+      if(data.lastIndex && (data.lastIndex.order != data.order)){
+          delete data.lastIndex
+          console.log("last index dropped")
+      }
+      
+
+      var query = transactions.prepares(data)
+      try {
+          let results = await models.sequelize.query(query, { type: models.sequelize.QueryTypes.SELECT })
+          let lastIndex = undefined
+          if (results.length > 0){      
+              console.log("result length",results.length)
+              lastIndex = {                    
+                  order : data.order,
+                  type : data.type,
+                  begin : data.begin,
+                  end : data.end                
+              };
+              lastIndex[data.page] = results[results.length - 1].id
+          }
+          resolve({ results, lastIndex })
+
+      } catch (err) {
+          reject(err)
+      }
+  })
+
 
 }
