@@ -177,14 +177,23 @@
 
 </br>
 
-## 📕 작업 효율 개선 방안
+## 📕 기존 작업 효율을 위한 방안
 
-- Node.js, express, MongoDB, Mongoose, socket.io를 활용해서 CRUD API, 회원가입 로그인 API, 프로젝트 API, 퍼블리싱 API, 실시간 이벤트 처리를 구현했습니다.
-- 인증, 인가를 위해 세션, 쿠키를 활용했습니다.
+- Node.js, express, sequelize, mysql2, jest를 활용해서 회원가입 로그인 API, 거래내역 조회 API, 입출금 API, 계좌생성 API를 구현했습니다.
+- 인증, 인가를 위해 쿠키를 활용했습니다.
 - 코드 컨벤션, 커밋 컨벤션, Git Flow를 지켜가며 작업했습니다.
 - Github Project, 마일스톤을 활용해서 백로그, 이슈 관리를 진행했습니다.
 - 계층 분리를 통해 코드의 가독성을 높였습니다.
 - 리팩토링을 통해 가독성을 높이고, 유지보수를 편하게 하기 위해 노력 했습니다.
+
+</br>
+</br>
+
+## ➕ 추가한 작업 효울 방식
+
+- 모두의 의견을 반영하여 API 명세를 작성했습니다.
+- 테이블에 대한 db 모델을 구축하고 각 API와 db가 연결하는 메소드를 미리 만들었습니다.
+- API 별로 작업을 나누어 병목현상을 줄였습니다.
 
 </br>
 </br>
@@ -225,45 +234,7 @@
 <br>
 <br>
 
-## 📕 __실시간 저장 성능을 위한 구현방안__
-- 처음에는 일정 시간 단위로 단순히 데이터를 보내는 것을 생각했지만, 단위가 길어지면 실시간 저장이 힘들고 짧아지면 너무 빈번한 저장으로 성능에 좋지 않다고 생각했습니다.
-- 그렇다고 사용자가 데이터를 변경할 때마다 요청한다면 1초에 수십번의 요청 및 쿼리실행이 될 것이라 생각하여 개선방안을 생각해보았습니다.
-  
-  <img src="https://user-images.githubusercontent.com/38933716/140969497-f238b28d-d89b-49d0-8de7-f0ab8ee909fd.png" width="600" height="400"/>
-
-  <img src="https://user-images.githubusercontent.com/38933716/140969491-e555e2ad-6acd-4e56-a402-fdd1f594c24d.png" width="300" height="400"/>
-
-  ##### 간단한 코드입력에도 수십번의 저장을 시도하는 모습
-
-<br>
-
-- 1차적으로, 서버에 버퍼를 두는 방식을 생각했습니다. 클라이언트가 저장요청을 보내면 서버는 해당 데이터를 버퍼에 임시보관하고, 일정 시간 뒤 버퍼의 최신 데이터를 DB에 저장하도록 했습니다.
-
-  <img src="https://user-images.githubusercontent.com/38933716/140970465-5e865ad2-aff2-4e55-81f2-38bc1c8560b6.png" width="450" height="300"/>
-  
-  ##### 받아온 정보를 버퍼에 저장하는 부분 
-
-  <br>
-
-  <img src="https://user-images.githubusercontent.com/38933716/140970472-d10a34cc-4925-457a-a8aa-e8fb738bfb03.png" width="500" height="350"/>
-  
-  ##### 일정시간 뒤, 정보를 DB에 저장하는 부분
-
-- 이를 통해 어느정도의 성능개선을 기대할 수 있었지만, 클라이언트에서의 많은 요청은 여전히 존재했습니다.
-- 이 문제를 개선하기 위해 클라이언트에서도 저장요청에 CoolTime을 구현하기로 했습니다.
-  
- <br>
-
-   <img src="https://user-images.githubusercontent.com/38933716/140970462-30f5d8d7-5f7e-4a08-8629-26695366d0e7.png" width="500" height="350"/>
-
-- isCoolTime 변수와 setTimeout을 이용해, 정보를 여러번 변경하더라도 1초 뒤에 하나의 요청만 하도록 변경하였습니다.
-
-</br>
-</br>
-
-   <img src="https://user-images.githubusercontent.com/38933716/140970161-7f5f26cd-3c9d-41ba-b543-2536a8927034.png" width="400" height="400"/>
-
-- 그 결과 이전과 똑같은 방법으로 테스트했을 때, 90번에 달하는 저장 요청이 9번의 버퍼저장과 4번의 DB쿼리 실행으로 줄어들었음에도 실시간 저장이 가능해졌습니다.
+## 🚥 거래내역이 1억건을 넘어갈 때에 대한 고려
 
 
 </br>
@@ -299,8 +270,8 @@
 - __배포된 서버 주소__ 및 자세한 API 명세는 아래에서 확인 가능합니다.
 - [🗂 API Description Link](https://documenter.getpostman.com/view/15698210/UVC5F7jC)
 - [![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/15698210/UVC5F7jC) 을 클릭하여 웹브라우저 혹은 Postman 클라이언트에 콜렉션이 로드되면
-   1. Variables 탭에서 서버 Host와 Port를 지정합니다. (기본값이 지정되어 있습니다.
-   2. Variables 탭에서 테스트하는 동안 사용할 username과 password 그리고 newProjectName을 지정합니다. (기본값이 지정되어 있습니다.)
+   1. Variables 탭에서 서버 Host와 Port를 지정합니다. (기본값이 지정되어 있습니다.)
+   2. Variables 탭에서 테스트에 사용할 username과 password accountpassword을 지정합니다. (기본값이 지정되어 있습니다.)
    3. 그후 우측 상단의 Run 버튼을 눌러 RUN ORDER 화면에 진입한 뒤 Run \[Collection Name\]을 클릭하면, 이상적인 상황에서의 테스트가 진행됩니다.
     <img src = "https://user-images.githubusercontent.com/32833404/140971968-5bbe1a9a-5dd4-43a4-80f5-54f36146cabf.jpg">
        
@@ -309,16 +280,8 @@
 
         **유의사항**
         *일부 요청의 경우 JWT를 필요로합니다. JWT는 로그인 과정에서 "Set-Cookie" 헤더를 통해 클라이언트가 스스로 관리하게끔 전달됩니다.
-        *프로젝트 등록 과정에서 콜렉션 Variable의 projectId를 자동으로 수정합니다. 이를 원치 않는다면 해당 요청의 Test Script에서 지워주세요
+        *프로젝트 등록 과정에서 콜렉션 Variable의 일부 값을 자동으로 수정합니다. 이를 원치 않는다면 해당 요청의 Test Script에서 지워주세요
  
-- __게임 제작의 경우__ 다음과 같은 과정으로 __브라우저를 이용__ 하여 확인 가능합니다.
-  1. 테스트 하기 전, api요청을 통해 프로젝트를 생성하고 프로젝트Id를 알고있어야 합니다.
-     -  테스트를 위하여, [.env설정 노션 링크](https://www.notion.so/pre-onboarding15/750e9c9bd84f49bda72146b46a77923a)에 예시용 정보 및 주소를 적어놓았습니다.
-  2.  아래 주소로 접속하여 로그인을 합니다.
-      - 로그인 페이지 http://{{서버 주소}}/user/token
-  
-  3.  아래 주소로 접속하여 게임제작 및 퍼블리시를 테스트합니다.
-       -  게임제작 페이지 http://{{서버 주소}}/projects/my/{{프로젝트Id}}?username={{유저네임}} 
 
 
 </br>
