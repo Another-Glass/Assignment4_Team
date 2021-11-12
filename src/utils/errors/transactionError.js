@@ -10,4 +10,12 @@ class NotEnoughBalanceError extends Error {
   }
 }
 
+class AccountNotExistsError extends Error {
+  constructor(message = responseMessage.NOT_ENOUGH_BALANCE, status = statusCode.NOT_FOUND) {
+    super(message);
+    this.status = status;
+  }
+}
+
 module.exports.NotEnoughBalanceError = NotEnoughBalanceError;
+module.exports.AccountNotExistsError = AccountNotExistsError;
