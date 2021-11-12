@@ -7,5 +7,5 @@ module.exports = {
   dbPASSWORD: process.env.RDS_PASSWORD,
   dbHOSTNAME: process.env.RDS_HOSTNAME,
   dbPORT: process.env.RDS_PORT,
-  isSqlite: process.env.RDS_PORT,
+  isSqlite: process.env.IS_SQLLITE,
 };
