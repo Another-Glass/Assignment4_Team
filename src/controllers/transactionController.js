@@ -26,6 +26,11 @@ exports.postTransaction = async (req, res, next) => {
         const { salt, password: realPassword } = await accountService.readAccountPassword({ accountNumber });
         const inputPassword = encryption.encrypt(String(accountPassword), salt);
 
+        let exists = await transactionService.checkAccountExists(accountNumber,userId)
+        if (!exists) {
+            throw new AccountNotExistsError();
+        }
+        
         // 패스워드 불일치
         if (inputPassword !== realPassword)
             throw new PasswordMissMatchError();
