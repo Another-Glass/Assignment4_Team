@@ -53,7 +53,7 @@ const dateFilter = (tableName, begin, end) => {
     let beginStatement
     let endStatement
     if (begin) {
-        beginStatement = `${tableName}.transactionDate >= ${process.env.IS_SQLLITE ? `datetime("${begin}")` : `TIMESTAMP("${begin}"`})`
+        beginStatement = `${tableName}.transactionDate >= ${process.env.IS_SQLLITE ? `datetime("${begin}")` : `TIMESTAMP("${begin}")`}`
     } else {
         beginStatement = undefined
     }
