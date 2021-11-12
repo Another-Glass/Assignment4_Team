@@ -6,6 +6,7 @@ const logger = require('../utils/logger');
 const encryption = require("../libs/encryption.js")
 const { EntityNotExistError, ValidationError, UnAuthorizedError } = require('../utils/errors/commonError');
 const { PasswordMissMatchError } = require('../utils/errors/userError');
+const { AccountNotExistsError } = require('../utils/errors/transactionError')
 
 const COOKIE_TOKEN_FEILD = 'AG3_LAST_INDEX';
 
@@ -22,15 +23,15 @@ exports.postTransaction = async (req, res, next) => {
         const { type, transactionAmount, briefs, accountPassword } = req.body;
 
         // 비밀번호가 일치 하지 않으면 에러처리 
-        const { salt, password: realPassword } =  await accountService.readAccountPassword({accountNumber});
+        const { salt, password: realPassword } = await accountService.readAccountPassword({ accountNumber });
         const inputPassword = encryption.encrypt(String(accountPassword), salt);
 
         // 패스워드 불일치
         if (inputPassword !== realPassword)
             throw new PasswordMissMatchError();
-        
+
         // 토큰이 유효하지 않으면 에러처리
-        if (userId === undefined) 
+        if (userId === undefined)
             throw new UnAuthorizedError();
 
         // 입력값이 잘 들어오지 않는다면 에러처리
@@ -43,22 +44,22 @@ exports.postTransaction = async (req, res, next) => {
         let rawType = 0;
         switch (type) {
             case "deposit": resMessage = responseMessage.DEPOSIT_SUCCESS; rawType = 0; break;
-            case "withdraw": resMessage = responseMessage.WITHDRAW_SUCCESS; rawType = 1;  break;
+            case "withdraw": resMessage = responseMessage.WITHDRAW_SUCCESS; rawType = 1; break;
             default: throw new ValidationError();
         }
-        
+
         const transactionData = {
             accountNumber,
             transactionAmount,
             briefs,
             accountPassword,
-            type:rawType,
+            type: rawType,
         }
         const newTransaction = await transactionService.createTransaction(transactionData)
 
 
         return res.status(statusCode.OK)
-            .send(resFormatter.success(resMessage, { balance:newTransaction.balance }));
+            .send(resFormatter.success(resMessage, { balance: newTransaction.balance }));
     }
     catch (err) {
         next(err);
@@ -76,7 +77,7 @@ exports.getTransaction = async (req, res, next) => {
 
         let exists = await transactionService.checkAccountExists(accountNumber)
         if (!exists) {
-            throw new Error();
+            throw new AccountNotExistsError();
         }
 
         let data = {
@@ -89,7 +90,6 @@ exports.getTransaction = async (req, res, next) => {
             lastIndex: incomeLastIndex
         };
 
-        console.log("data : ", data)
 
         let dbResolve = await transactionService.readTransactionList(data);
 

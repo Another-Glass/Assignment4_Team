@@ -96,7 +96,7 @@ exports.readTransactionList = async (data) => {
 
       if(data.lastIndex && (data.lastIndex.order != data.order)){
           delete data.lastIndex
-          console.log("last index dropped")
+          
       }
       
 
@@ -105,14 +105,17 @@ exports.readTransactionList = async (data) => {
           let results = await models.sequelize.query(query, { type: models.sequelize.QueryTypes.SELECT })
           let lastIndex = undefined
           if (results.length > 0){      
-              console.log("result length",results.length)
-              lastIndex = {                    
+              
+              lastIndex = {
+                  page : data.page,
                   order : data.order,
                   type : data.type,
                   begin : data.begin,
-                  end : data.end                
+                  end : data.end,
+                  accountNumber : data.accountNumber,
+                  value : results[results.length - 1].id               
               };
-              lastIndex[data.page] = results[results.length - 1].id
+              
           }
           resolve({ results, lastIndex })
 
