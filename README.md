@@ -48,7 +48,7 @@
 | **blog**: [Plus Ultra](https://overcome-the-limits.tistory.com/) </br> **github**: [epitone](https://github.com/epitoneproject)| **blog**: [sudocorp](https://sudocorp.tistory.com/) </br> **github**: [SibaDoge1](https://github.com/SibaDoge1)| **blog**: [raejun92.log](https://velog.io/@raejun92) </br> **github**: [raejun92](https://github.com/raejun92)
 | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |![sprint4](https://img.shields.io/badge/wanted-sprint4-purple)  | ![sprint4](https://img.shields.io/badge/wanted-sprint3-purple) |
 | 유저 & 계좌생성 API, DB / Test   | 입출금 API, DB / DevOps | 거래내역 API, DB |
-| [프로젝트 회고](https://overcome-the-limits.tistory.com/entry/%ED%9A%8C%EA%B3%A0-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-3%EC%B0%A8-%EA%B3%BC%EC%A0%9C?category=980007) | [프로젝트 회고](https://sudocorp.tistory.com/4) | [프로젝트 회고]()
+| [프로젝트 회고](https://overcome-the-limits.tistory.com/entry/%ED%9A%8C%EA%B3%A0-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-4%EC%B0%A8-%EA%B3%BC%EC%A0%9C) | [프로젝트 회고](https://sudocorp.tistory.com/5) | [프로젝트 회고](https://velog.io/@raejun92/Assignment4-8%ED%8D%BC%EC%84%BC%ED%8A%B8)
 
 <br>
 <br>
@@ -59,7 +59,7 @@
 | **blog**: [Makkiato](https://makkiato.tistory.com) </br> **github**: [Makkiato](https://github.com/Makkiato) | **blog**: [gusrlf14](https://velog.io/@gusrlf14) </br> **github**: [hyunghilkim](https://github.com/hyunghilkim) | **blog**: [dongjay00.log](https://velog.io/@dongjay00) </br> **github**: [dongjay00](https://github.com/dongjay00) |
 | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |
 |                    거래내역 API, DB                      |                             입출금 API, DB                              |                              유저 & 계좌생성 API, DB / Test                              |
-|                      [프로젝트 회고]()                       |                      [프로젝트 회고]()                       | [프로젝트 회고]() |
+|                      [프로젝트 회고](https://makkiato.tistory.com/8)                       |                      [프로젝트 회고](https://velog.io/@gusrlf14/%EC%9B%90%ED%8B%B0%EB%93%9C-%EC%9C%84%EC%BD%94%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-4%ED%9A%8C%EC%B0%A8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0)                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%84%A4%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
 
 
 </div>
@@ -91,7 +91,7 @@
 - 출금 API
 
 
-<details><summary>[고려 사항]</summary>
+<details><summary>[고려 사항 및 상세설명]</summary>
   **✔️ 주요 고려 사항은 다음과 같습니다.**
 
 ---
@@ -111,8 +111,7 @@
 ---
 
 - (**8퍼센트가 직접 로컬에서 실행하여 테스트를 원하는 경우를 위해**) 테스트의 편의성을 위해 mysql, postgresql 대신 sqllite를 사용해 주세요.
-</div>
-</details>
+
 
 <br>
 
@@ -168,32 +167,28 @@
     - 이를 고려하여 어떤 설계를 추가하셨는지를 README에 남겨 주세요.
 
 
-</br>
-</br>
 
+</div>
+</details>
+</br>
+</br>
 ## 📕 모델링
+
+</br>
 
 ![8퍼센트ERD](https://user-images.githubusercontent.com/48472537/141442936-320c7f6b-199f-4baf-bae4-9447c28bbc52.png)
 
 </br>
+</br>
 
-## 📕 기존 작업 효율을 위한 방안
+## 📕 작업 효율 개선 방안
 
-- Node.js, express, sequelize, mysql2, jest를 활용해서 회원가입 로그인 API, 거래내역 조회 API, 입출금 API, 계좌생성 API를 구현했습니다.
-- 인증, 인가를 위해 쿠키를 활용했습니다.
+- Node.js, express, Sequelize, sqlLite, 회원가입 로그인 API, 거래내역 조회 API, 입금/출금API, 계좌생성 API를 구현하였습니다.
+- 인증, 인가를 위해 JWT와 쿠키를 활용했습니다.
 - 코드 컨벤션, 커밋 컨벤션, Git Flow를 지켜가며 작업했습니다.
 - Github Project, 마일스톤을 활용해서 백로그, 이슈 관리를 진행했습니다.
 - 계층 분리를 통해 코드의 가독성을 높였습니다.
 - 리팩토링을 통해 가독성을 높이고, 유지보수를 편하게 하기 위해 노력 했습니다.
-
-</br>
-</br>
-
-## ➕ 추가한 작업 효울 방식
-
-- 모두의 의견을 반영하여 API 명세를 작성했습니다.
-- 테이블에 대한 db 모델을 구축하고 각 API와 db가 연결하는 메소드를 미리 만들었습니다.
-- API 별로 작업을 나누어 병목현상을 줄였습니다.
 
 </br>
 </br>
@@ -206,25 +201,23 @@
 
 <br>
 
-### [ 계좌생성 API ]
-
-- 계좌생성에 대한 이야기 작성
-
-<br>
-
 ### [ 입출금 API ]
 
-- 입출금 API 작성
+- 계좌 소유주만 요청 할 수 있게 구현 하였습니다.
+- 계좌의 잔액 내에서만 출금 할 수 있고, 잔액을 넘어선 출금 요청에 대해서는 적절한 에러처리를 하였습니다.
+
 
 <br>
 
 
 ### [ 거래내역 조회 API ]
 
-- 거래 내역 API 작성
-
+- 계좌의 소유주만 요청 할 수 있게 구현하였고, Pagination기능을 구현 하였습니다.
+- 거래 일시에 대한 필터링이 가능하게 구현 하였습니다.
+- 출금, 입금만 선택하여 필터링 될수 있게 구현 하였습니다.
 
 <br>
+
 
 ### [ 에러 핸들링 ]
 
@@ -234,38 +227,42 @@
 <br>
 <br>
 
+## ➕ 협업을 위한 노력
+
+- 구성원들의 전체 의견을 반영하여 API 명세와 DB모델을 구축 하였습니다.
+- 긴밀하게 소통하여, 신속하게 문제를 인식하고, 신속하게 해결 하기 위해 노력 하였습니다.
+- 전체 작업을 도메인 단위로 분리하여 구성원 간의 병목현상을 줄였습니다.
+
+</br>
+</br>
+
 ## 🚥 거래내역이 1억건을 넘어갈 때에 대한 고려
 
 
 ### 1. subquery를 이용한 수동 execution plan
 
-subquery를 이용해 시스템의 자동으로 생성되는 execution plan이 아닌 의도한 대로 최적의 탐색 방법이 나오도록 했다.
-거래내역의 특성상 온전히 나의 거래내역만 보여주면 되고, cardinallity 또한 의미있게 높을 뿐더러, FK index가 되어있어서 첫 where clause는 accountNumber에 할당 했다.
-다음은 입금,출금으로, 50%의 cardinallity 기대값을 갖는 transactionType을 선정했다.
-그리고 이전에 조회한 페이지에 이어서 연속한 페이지를 찾는 경우에는 이전의 탐색정보를 활용하여 높은 page 값에서의 overhead를 줄이고, 마지막으로 요청한 기간에 대해서 조건을 맞췄다.
+- subquery를 이용해 시스템의 자동으로 생성되는 execution plan이 아닌 의도한 대로 최적의 탐색 방법이 나오도록 했습니다. 거래내역의 특성상 온전히 나의 거래내역만 보여주면 되고, cardinallity 또한 의미있게 높을 뿐더러, FK index가 되어있어서 첫 where clause는 accountNumber에 할당 했습니다.
+- 다음은 입금,출금으로, 50%의 cardinallity 기대값을 갖는 transactionType을 선정했습니다.
+그리고 이전에 조회한 페이지에 이어서 연속한 페이지를 찾는 경우에는 이전의 탐색정보를 활용하여 높은 page 값에서의 overhead를 줄이고, 마지막으로 요청한 기간에 대해서 조건을 맞췄습니다.
 
 ### 2. pagination 기능 강화
 
-가장 간단하게 사용할 수 있는 pagination인 limit - offset의 경우, 결국 offset 만큼의 탐색을 진행해야 하기에
-page 값이 높아질수록 overhead가 커진다.
-그래서 이전 page의 마지막 row의 PK를 비롯한, 해당 사용자의 pagination context를 Cookie로 클라이언트에 전달했다.
-해당 context는 다음 조회 요청에 돌아와서, 새 요청과 비교하여 적용할 수 있는지를 판단한다.
-Cookie에 광범위한 데이터를 기록할수는 없기에, 단순히 연속적으로 1페이지, 2페이지, 3페이지 순서대로 넘어가는 경우에만 효과를 받지만, 버튼을 통해 넘어가는 페이지가 아닌 스크롤로 넘어가는 페이지가 대부분인 요즘 프론트엔드 환경에서는 적극적으로 적용 가능하다고 판단된다.
+- 가장 간단하게 사용할 수 있는 pagination인 limit - offset의 경우, 결국 offset 만큼의 탐색을 진행해야 하기에 page 값이 높아질수록 overhead가 커지는 문제가 있습니다..
+- 그래서 이전 page의 마지막 row의 PK를 비롯한, 해당 사용자의 pagination context를 Cookie로 클라이언트에 전달했습니다.
+- 해당 context는 다음 조회 요청에 돌아와서, 새 요청과 비교하여 적용할 수 있는지를 판단합니다.
+다만 Cookie에 광범위한 데이터를 기록할수는 없기에, 단순히 연속적으로 1페이지, 2페이지, 3페이지 순서대로 넘어가는 경우에만 효과를 받는 점은 아쉽다고 느끼는 부분입니다.
 
 ### 3. (미적용) Stored procedure와 Prepared statements를 이용한 network, compile overhead 감소
 
-지난 9개월간 이전 직장에서 일하면서 느꼈던 것중에 가장 기억에 남는 것은, 대량의 record를 불러올때 execution time에 비해 transfer time이 10배씩이나 높게 잡힌다는 것이다.
-아무리 record의 column들을 확실히 크게 잡기는 했지만, 그것을 감안하더라도 믿기 힘든 수치였다.
-이미 DBMS는 올바른 index만 제공을 해준다면, 충분히 제 역할을 해내지만, 전송해야하는 양이 많다면 결국 지연될수 밖에 없다.
-따라서 실제로는 execution plan 이외에도, 어떻게 실행을 시작시킬지, 얼마만큼이 정확히 필요할지를 예측하는 것도 최적화에 있어서 중요하다.
+- 실제로는 execution plan 이외에도, 어떻게 실행을 시작시킬지, 얼마만큼이 정확히 필요할지를 예측하는 것도 최적화에 있어서 중요하다고 생각합니다. 많은 DBMS에서 지원하는 기능인 Stored procedure와 Prepared statements를 사용하면 쿼리를 캐싱하는데 도움이 될거라 생각합니다. 
+- 다만 이번 과제에서는 시간의 부족으로 이를 적용하지는 못했습니다.
 
 ### 4. (미적용) Table 분할 및 필요시 View를 이용한 통합
-아무리 index가 잘 되어있다고 해도, 전체 용량이 커지면 index도 커지고, 이는 INSERT와 DELETE 과정에서 추가적인 overhead가 계속 발생한다는 의미이다.
-따라서 언젠가 1억건이 넘는 거래가 있다고 할때, 한 테이블에서 관리하기에는 너무 비효율적일거라 생각된다.
+- 아무리 index가 잘 되어있다고 해도, 전체 용량이 커지면 index도 커지고, 이는 INSERT와 DELETE 과정에서 추가적인 overhead가 계속 발생할 것임을 예상했습니다.
+- 이번과제에는 적용하지 못했지만 언젠가 1억건이 넘는 거래가 있다고 할때, 테이블을 분할하거나 분산저장시스템을 이용하는 것이 좋다고 생각합니다.
 
-</br>
-</br>
-
+<br>
+<br>
 
 ## 🛠 실행 방법
 
@@ -280,6 +277,10 @@ Cookie에 광범위한 데이터를 기록할수는 없기에, 단순히 연속�
     PORT= '서버의 포트'
     JWT_SECERT= '원하는 시크릿코드'
     JWT_ALGO="HS256"
+    ADMIN_USER="test@naver.com"
+    ADMIN_PASSWORD="1234"
+    HOST="http://localhost:4000"
+    IS_SQLLITE=true
     ```
 
 
@@ -294,10 +295,10 @@ Cookie에 광범위한 데이터를 기록할수는 없기에, 단순히 연속�
 
 - Postman을 활용하여 API 작동 테스트를 진행했습니다. 
 - __배포된 서버 주소__ 및 자세한 API 명세는 아래에서 확인 가능합니다.
-- [🗂 API Description Link](https://documenter.getpostman.com/view/15698210/UVC5F7jC)
-- [![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/15698210/UVC5F7jC) 을 클릭하여 웹브라우저 혹은 Postman 클라이언트에 콜렉션이 로드되면
-   1. Variables 탭에서 서버 Host와 Port를 지정합니다. (기본값이 지정되어 있습니다.)
-   2. Variables 탭에서 테스트에 사용할 username과 password accountpassword을 지정합니다. (기본값이 지정되어 있습니다.)
+- [🗂 API Description Link](https://documenter.getpostman.com/view/18068137/UVC8C5cm)
+- [![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/18068137/UVC8C5cm) 을 클릭하여 웹브라우저 혹은 Postman 클라이언트에 콜렉션이 로드되면
+   1. Variables 탭에서 서버 Host와 Port를 지정합니다. (기본값이 지정되어 있습니다.
+   2. Variables 탭에서 테스트하는 동안 사용할 username과 password 그리고 newProjectName을 지정합니다. (기본값이 지정되어 있습니다.)
    3. 그후 우측 상단의 Run 버튼을 눌러 RUN ORDER 화면에 진입한 뒤 Run \[Collection Name\]을 클릭하면, 이상적인 상황에서의 테스트가 진행됩니다.
     <img src = "https://user-images.githubusercontent.com/32833404/140971968-5bbe1a9a-5dd4-43a4-80f5-54f36146cabf.jpg">
        
@@ -306,10 +307,8 @@ Cookie에 광범위한 데이터를 기록할수는 없기에, 단순히 연속�
 
         **유의사항**
         *일부 요청의 경우 JWT를 필요로합니다. JWT는 로그인 과정에서 "Set-Cookie" 헤더를 통해 클라이언트가 스스로 관리하게끔 전달됩니다.
-        *프로젝트 등록 과정에서 콜렉션 Variable의 일부 값을 자동으로 수정합니다. 이를 원치 않는다면 해당 요청의 Test Script에서 지워주세요
  
-
-
+ 
 </br>
 </br>
 
@@ -335,7 +334,7 @@ Cookie에 광범위한 데이터를 기록할수는 없기에, 단순히 연속�
 </br>
 
 <div align=center>
-<img src="https://user-images.githubusercontent.com/59385491/140954041-f43eed69-5bb5-4cac-a7c8-9a1c70afb649.png" height=850>
+<img src="https://user-images.githubusercontent.com/38933716/141472747-fbf7287f-d47f-4e22-8802-15810e88bab9.png" height=850>
 </div>
 
 
