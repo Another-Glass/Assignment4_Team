@@ -3,6 +3,7 @@ const { resFormatter } = require('../utils');
 const transactionService = require('../services/transactionService.js');
 const accountService = require('../services/accountService.js');
 const logger = require('../utils/logger');
+const encryption = require("../libs/encryption.js")
 const { EntityNotExistError, ValidationError, UnAuthorizedError } = require('../utils/errors/commonError');
 
 
