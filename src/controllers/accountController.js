@@ -13,7 +13,7 @@ exports.postAccount = async (req, res, next) => {
     const { userId } = req.decoded;
 
     if (accountPassword === undefined || userId === undefined) {
-      throw new ValidationError();
+      throw new ValidationError()
     }
 
     const salt = encryption.makeSalt();
@@ -22,16 +22,14 @@ exports.postAccount = async (req, res, next) => {
     const dto = {
       userId,
       password: encryptPassword,
-      salt,
-    };
+      salt
+    }
 
-    const newAccount = await accountService.createAccount(dto);
-    return res.status(statusCode.CREATED).send(
-      resFormatter.success(responseMessage.ACCOUNT_CREATED, {
-        accountNumber: newAccount.accountNumber,
-      }),
-    );
+    const newAccount = await accountService.createAccount(dto)
+    return res
+      .status(statusCode.CREATED)
+      .send(resFormatter.success(responseMessage.ACCOUNT_CREATED, { accountNumber: newAccount.accountNumber }))
   } catch (err) {
     next(err);
   }
-};
+}

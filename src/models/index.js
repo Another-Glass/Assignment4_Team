@@ -5,13 +5,13 @@ const fs = require('fs');
 const path = require('path');
 const basename = path.basename(__filename);
 
-const IS_SQLLITE = false;
+const IS_SQLLITE = true;
 
 let sequelize;
 if (IS_SQLLITE) {
   sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../database.db',
+    storage: './database.db',
     logging: true,
   });
 } else {
