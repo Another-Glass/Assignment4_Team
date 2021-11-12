@@ -46,7 +46,7 @@
 |:-----:|:-----:|:-----: |
 |  <img src="https://avatars.githubusercontent.com/u/59385491?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/38933716?v=4" height=200 width=200> |<img src="https://avatars.githubusercontent.com/u/67402180?v=4" height=200 width=200>  |
 | **blog**: [Plus Ultra](https://overcome-the-limits.tistory.com/) </br> **github**: [epitone](https://github.com/epitoneproject)| **blog**: [sudocorp](https://sudocorp.tistory.com/) </br> **github**: [SibaDoge1](https://github.com/SibaDoge1)| **blog**: [raejun92.log](https://velog.io/@raejun92) </br> **github**: [raejun92](https://github.com/raejun92)
-| ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |![sprint4](https://img.shields.io/badge/wanted-sprint4-purple)  | ![sprint4](https://img.shields.io/badge/wanted-sprint3-purple) |
+| ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |![sprint4](https://img.shields.io/badge/wanted-sprint4-purple)  | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |
 | 유저 & 계좌생성 API, DB / Test   | 입출금 API, DB / DevOps | 거래내역 API, DB |
 | [프로젝트 회고](https://overcome-the-limits.tistory.com/entry/%ED%9A%8C%EA%B3%A0-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-4%EC%B0%A8-%EA%B3%BC%EC%A0%9C) | [프로젝트 회고](https://sudocorp.tistory.com/5) | [프로젝트 회고](https://velog.io/@raejun92/Assignment4-8%ED%8D%BC%EC%84%BC%ED%8A%B8)
 
@@ -391,22 +391,29 @@
  ┣ 📂services
  ┃ ┣ 📜accountService.js
  ┃ ┣ 📜transactionService.js
+ ┃ ┣ 📜transactionServicePrepared.js
  ┃ ┗ 📜userService.js
- ┃
  ┣ 📂test
  ┃ ┣ 📂data
  ┃ ┃ ┗ 📂dto
- ┃ ┃   ┗ 📜signup.json
+ ┃ ┃   ┣ 📜postAccount.json
+ ┃ ┃   ┣ 📜signup.json
+ ┃ ┃   ┗ 📜token.json
  ┃ ┣ 📂unit
- ┃ ┃ ┗ 📂controllers
- ┃ ┃   ┗ 📂userController
- ┃ ┃     ┣ 📜postToken.test.js
- ┃ ┃     ┗ 📜postUser.test.js
+ ┃   ┗ 📂controllers
+ ┃     ┣ 📂userController
+ ┃     ┃ ┗ 📜postAccount.test.js
+ ┃     ┣ 📂userController
+ ┃     ┃ ┗ 📜postTransaction.test.js
+ ┃     ┗ 📂userController
+ ┃       ┣ 📜postToken.test.js
+ ┃       ┗ 📜postUser.test.js
  ┃
  ┣ 📂utils
  ┃ ┣ 📂errors
  ┃ ┃ ┣ 📜commonError.js
  ┃ ┃ ┣ 📜errors.js
+ ┃ ┃ ┣ 📜tokenError.js
  ┃ ┃ ┣ 📜transactionError.js
  ┃ ┃ ┗ 📜userError.js
  ┃ ┣ 📜index.js
