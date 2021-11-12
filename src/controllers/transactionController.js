@@ -75,7 +75,9 @@ exports.getTransaction = async (req, res, next) => {
         const accountNumber = req.params.accountNumber;
         let { type, order = 'ASC', page = 1, begin, end } = req.query;
 
-        let exists = await transactionService.checkAccountExists(accountNumber)
+        let userId = req.decoded.userId;
+
+        let exists = await transactionService.checkAccountExists(accountNumber,userId)
         if (!exists) {
             throw new AccountNotExistsError();
         }

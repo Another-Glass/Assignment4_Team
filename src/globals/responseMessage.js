@@ -45,5 +45,5 @@ module.exports = {
 
   //거래 내역
   TRANSACTIONS_FOUND: '거래내역을 찾았습니다.',
-  ACCOUNT_NOT_FOUND: '대상 계좌가 없습니다.',
+  ACCOUNT_NOT_FOUND: '명의와 일치하는 계좌가 없습니다.',
 };

@@ -76,9 +76,13 @@ exports.createTransaction = async (data) => {
 }
 
 
-exports.checkAccountExists = async (account) => {
+exports.checkAccountExists = async (account,userId) => {
   return models.account.count({
-      accountNumber: `"${account}"`
+    where : {
+      accountNumber: `${account}`,
+      userId: `${userId}`
+    }
+      
   })
 }
 
