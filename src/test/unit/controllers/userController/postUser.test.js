@@ -16,49 +16,49 @@ beforeEach(() => {
   req = httpMocks.createRequest();
   res = httpMocks.createResponse();
   next = jest.fn();
-})
+});
 
 describe('signup 단위 테스트', () => {
   beforeEach(() => {
     req.body = signupData;
-  })
+  });
 
-  it("userController에 postUser가 존재하는가?", () => {
-    expect(typeof userController.postUser).toBe("function")
-  })
+  it('userController에 postUser가 존재하는가?', () => {
+    expect(typeof userController.postUser).toBe('function');
+  });
 
-  it("userController의 postUser에서 service의 checkUser를 호출하는가?", async () => {
+  it('userController의 postUser에서 service의 checkUser를 호출하는가?', async () => {
     await userController.postUser(req, res, next);
-    expect(userService.checkUser).toBeCalled()
-  })
+    expect(userService.checkUser).toBeCalled();
+  });
 
-  it("userController의 postUser에서 service의 checkUser에 인자값을 넣어서 호출하는가?", async () => {
+  it('userController의 postUser에서 service의 checkUser에 인자값을 넣어서 호출하는가?', async () => {
     await userController.postUser(req, res, next);
     expect(userService.checkUser).toBeCalledWith(req.body.userId);
-  })
+  });
 
-  it("userController의 postUser에서 service의 signup을 호출하는가?", async () => {
+  it('userController의 postUser에서 service의 signup을 호출하는가?', async () => {
     await userController.postUser(req, res, next);
-    expect(userService.signup).toBeCalled()
-  })
+    expect(userService.signup).toBeCalled();
+  });
 
-  it("userController의 postUser에서 상태 코드를 201을 넘겨주는가?", async() => {
+  it('userController의 postUser에서 상태 코드를 201을 넘겨주는가?', async () => {
     await userController.postUser(req, res, next);
     expect(res.statusCode).toBe(statusCode.CREATED);
-    expect(res._isEndCalled()).toBeTruthy()
-  })
-  
-  it("userController의 postUser에서 이름이 중복된 경우 에러를 호출하는가?", async () => {
+    expect(res._isEndCalled()).toBeTruthy();
+  });
+
+  it('userController의 postUser에서 이름이 중복된 경우 에러를 호출하는가?', async () => {
     const errorMessage = new DuplicatedError();
     userService.checkUser.mockReturnValue(errorMessage);
     await userController.postUser(req, res, next);
     expect(next).toBeCalledWith(errorMessage);
-  })
+  });
 
-  it("userController의 postUser에서 입력값이 제대로 들어오지 않는 경우 에러를 호출하는가?", async () => {
-    req.body = { "userId": 'test' };
+  it('userController의 postUser에서 입력값이 제대로 들어오지 않는 경우 에러를 호출하는가?', async () => {
+    req.body = { userId: 'test' };
     const errorMessage = new ValidationError();
     await userController.postUser(req, res, next);
     expect(next).toBeCalledWith(errorMessage);
-  })
-})
+  });
+});
