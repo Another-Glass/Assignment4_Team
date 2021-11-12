@@ -11,7 +11,7 @@ class NotEnoughBalanceError extends Error {
 }
 
 class AccountNotExistsError extends Error {
-  constructor(message = responseMessage.NOT_ENOUGH_BALANCE, status = statusCode.NOT_FOUND) {
+  constructor(message = responseMessage.ACCOUNT_NOT_FOUND, status = statusCode.NOT_FOUND) {
     super(message);
     this.status = status;
   }
