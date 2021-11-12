@@ -237,6 +237,32 @@
 ## 🚥 거래내역이 1억건을 넘어갈 때에 대한 고려
 
 
+### 1. subquery를 이용한 수동 execution plan
+
+subquery를 이용해 시스템의 자동으로 생성되는 execution plan이 아닌 의도한 대로 최적의 탐색 방법이 나오도록 했다.
+거래내역의 특성상 온전히 나의 거래내역만 보여주면 되고, cardinallity 또한 의미있게 높을 뿐더러, FK index가 되어있어서 첫 where clause는 accountNumber에 할당 했다.
+다음은 입금,출금으로, 50%의 cardinallity 기대값을 갖는 transactionType을 선정했다.
+그리고 이전에 조회한 페이지에 이어서 연속한 페이지를 찾는 경우에는 이전의 탐색정보를 활용하여 높은 page 값에서의 overhead를 줄이고, 마지막으로 요청한 기간에 대해서 조건을 맞췄다.
+
+### 2. pagination 기능 강화
+
+가장 간단하게 사용할 수 있는 pagination인 limit - offset의 경우, 결국 offset 만큼의 탐색을 진행해야 하기에
+page 값이 높아질수록 overhead가 커진다.
+그래서 이전 page의 마지막 row의 PK를 비롯한, 해당 사용자의 pagination context를 Cookie로 클라이언트에 전달했다.
+해당 context는 다음 조회 요청에 돌아와서, 새 요청과 비교하여 적용할 수 있는지를 판단한다.
+Cookie에 광범위한 데이터를 기록할수는 없기에, 단순히 연속적으로 1페이지, 2페이지, 3페이지 순서대로 넘어가는 경우에만 효과를 받지만, 버튼을 통해 넘어가는 페이지가 아닌 스크롤로 넘어가는 페이지가 대부분인 요즘 프론트엔드 환경에서는 적극적으로 적용 가능하다고 판단된다.
+
+### 3. (미적용) Stored procedure와 Prepared statements를 이용한 network, compile overhead 감소
+
+지난 9개월간 이전 직장에서 일하면서 느꼈던 것중에 가장 기억에 남는 것은, 대량의 record를 불러올때 execution time에 비해 transfer time이 10배씩이나 높게 잡힌다는 것이다.
+아무리 record의 column들을 확실히 크게 잡기는 했지만, 그것을 감안하더라도 믿기 힘든 수치였다.
+이미 DBMS는 올바른 index만 제공을 해준다면, 충분히 제 역할을 해내지만, 전송해야하는 양이 많다면 결국 지연될수 밖에 없다.
+따라서 실제로는 execution plan 이외에도, 어떻게 실행을 시작시킬지, 얼마만큼이 정확히 필요할지를 예측하는 것도 최적화에 있어서 중요하다.
+
+### 4. (미적용) Table 분할 및 필요시 View를 이용한 통합
+아무리 index가 잘 되어있다고 해도, 전체 용량이 커지면 index도 커지고, 이는 INSERT와 DELETE 과정에서 추가적인 overhead가 계속 발생한다는 의미이다.
+따라서 언젠가 1억건이 넘는 거래가 있다고 할때, 한 테이블에서 관리하기에는 너무 비효율적일거라 생각된다.
+
 </br>
 </br>
 
