@@ -172,6 +172,7 @@
 </details>
 </br>
 </br>
+
 ## 📕 모델링
 
 </br>
@@ -334,7 +335,7 @@
 </br>
 
 <div align=center>
-<img src="https://user-images.githubusercontent.com/38933716/141472747-fbf7287f-d47f-4e22-8802-15810e88bab9.png" height=850>
+<img src="https://user-images.githubusercontent.com/59385491/141483778-1fa0cdce-0cfd-4d67-8fba-434d8ee5e124.png" height=850>
 </div>
 
 
@@ -404,6 +405,7 @@
  ┃     ┣ 📂userController
  ┃     ┃ ┗ 📜postAccount.test.js
  ┃     ┣ 📂userController
+ ┃     ┃ ┗ 📜getTransaction.test.js
  ┃     ┃ ┗ 📜postTransaction.test.js
  ┃     ┗ 📂userController
  ┃       ┣ 📜postToken.test.js
