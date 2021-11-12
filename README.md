@@ -241,8 +241,8 @@
 
 ### 1. subquery를 이용한 수동 execution plan
 
-- subquery를 이용해 시스템의 자동으로 생성되는 execution plan이 아닌 의도한 대로 최적의 탐색 방법이 나오도록 했습니다. 거래내역의 특성상 온전히 나의 거래내역만 보여주면 되고, cardinallity 또한 의미있게 높을 뿐더러, FK index가 되어있어서 첫 where clause는 accountNumber에 할당 했습니다.
-- 다음은 입금,출금으로, 50%의 cardinallity 기대값을 갖는 transactionType을 선정했습니다.
+- subquery를 이용해 시스템의 자동으로 생성되는 execution plan이 아닌 의도한 대로 최적의 탐색 방법이 나오도록 했습니다. 거래내역의 특성상 온전히 나의 거래내역만 보여주면 되고, cardinality 또한 의미있게 높을 뿐더러, FK index가 되어있어서 첫 where clause는 accountNumber에 할당 했습니다.
+- 다음은 입금,출금으로, 50%의 cardinality 기대값을 갖는 transactionType을 선정했습니다.
 그리고 이전에 조회한 페이지에 이어서 연속한 페이지를 찾는 경우에는 이전의 탐색정보를 활용하여 높은 page 값에서의 overhead를 줄이고, 마지막으로 요청한 기간에 대해서 조건을 맞췄습니다.
 
 ### 2. pagination 기능 강화
@@ -399,7 +399,7 @@
  ┃ ┃   ┣ 📜postAccount.json
  ┃ ┃   ┣ 📜signup.json
  ┃ ┃   ┗ 📜token.json
- ┃ ┣ 📂unit
+ ┃ ┗ 📂unit
  ┃   ┗ 📂controllers
  ┃     ┣ 📂userController
  ┃     ┃ ┗ 📜postAccount.test.js
