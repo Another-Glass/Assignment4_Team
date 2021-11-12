@@ -1,0 +1,397 @@
+<div align="center">
+
+  # 원티드 백엔드 프리온보딩 4차 과제 - 8퍼센트
+
+  <img height="400" width="700" src="https://user-images.githubusercontent.com/59385491/139865333-05dabf0a-e283-4e51-94d9-8a42e6acbb7b.jpeg">
+
+
+  <h2> 👨‍💻 원티드 프리온보딩 어나더글라스 팀입니다. </h2>
+
+<p>6명의 안경잡이 개발자들의 시선과 관점이 담긴 과제입니다.</p>
+<p>무던히 포기하지 않고 견디고 견뎠던 그 시간들이 변함없는 단 하나의 해답임을 믿습니다.</p>
+
+</div>
+
+
+<div align=center>
+
+<img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" />
+<img alt="Hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FAnother-Glass%2FAssignment1_Team1%2Fblob%2Fdevelop%2FREADME.md&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" />
+<img alt="issues" src="https://img.shields.io/github/issues/Another-Glass/Assignment1_Team1" />
+
+
+</div>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+## 🎤 소개
+
+이 레포지토리는 [원티드 프리온보딩 백엔드 코스](https://www.wanted.co.kr/events/pre_onboarding_course_4) 4차 과제를 위해 만들어졌습니다. 
+
+-   일정 : 2021년 11월 11일(목) 오후 6시 ~ 11월 13일(토) 오전 10시
+
+<br>
+<br>
+
+<div align='center'>
+
+## 🧑🏻‍💻 팀원 소개
+
+| **팀장 박상수** | **팀원 김성연** | **팀원 최준호** |
+|:-----:|:-----:|:-----: |
+|  <img src="https://avatars.githubusercontent.com/u/59385491?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/38933716?v=4" height=200 width=200> |<img src="https://avatars.githubusercontent.com/u/67402180?v=4" height=200 width=200>  |
+| **blog**: [Plus Ultra](https://overcome-the-limits.tistory.com/) </br> **github**: [epitone](https://github.com/epitoneproject)| **blog**: [sudocorp](https://sudocorp.tistory.com/) </br> **github**: [SibaDoge1](https://github.com/SibaDoge1)| **blog**: [raejun92.log](https://velog.io/@raejun92) </br> **github**: [raejun92](https://github.com/raejun92)
+| ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |![sprint4](https://img.shields.io/badge/wanted-sprint4-purple)  | ![sprint4](https://img.shields.io/badge/wanted-sprint3-purple) |
+| 유저 & 계좌생성 API, DB / Test   | 입출금 API, DB / DevOps | 거래내역 API, DB |
+| [프로젝트 회고](https://overcome-the-limits.tistory.com/entry/%ED%9A%8C%EA%B3%A0-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-4%EC%B0%A8-%EA%B3%BC%EC%A0%9C) | [프로젝트 회고](https://sudocorp.tistory.com/5) | [프로젝트 회고](https://velog.io/@raejun92/Assignment4-8%ED%8D%BC%EC%84%BC%ED%8A%B8)
+
+<br>
+<br>
+
+|                       **팀원 어유선**                        |                       **팀원 김현길**                        |                       **팀원 이동훈**                        |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/u/32833404?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/48472537?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/68373235?v=4" height=200 width=200> |
+| **blog**: [Makkiato](https://makkiato.tistory.com) </br> **github**: [Makkiato](https://github.com/Makkiato) | **blog**: [gusrlf14](https://velog.io/@gusrlf14) </br> **github**: [hyunghilkim](https://github.com/hyunghilkim) | **blog**: [dongjay00.log](https://velog.io/@dongjay00) </br> **github**: [dongjay00](https://github.com/dongjay00) |
+| ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |
+|                    거래내역 API, DB                      |                             입출금 API, DB                              |                              유저 & 계좌생성 API, DB / Test                              |
+|                      [프로젝트 회고](https://makkiato.tistory.com/8)                       |                      [프로젝트 회고](https://velog.io/@gusrlf14/%EC%9B%90%ED%8B%B0%EB%93%9C-%EC%9C%84%EC%BD%94%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-4%ED%9A%8C%EC%B0%A8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0)                       | [프로젝트 회고](https://velog.io/@dongjay00/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%84%A4%EB%B2%88%EC%A7%B8-%EA%B3%BC%EC%A0%9C-%ED%9A%8C%EA%B3%A0) |
+
+
+</div>
+
+<br>
+<br>
+<br>
+
+## 📕 과제 내용
+
+### [필수 포함 사항]
+
+- READ.ME 작성
+    - 프로젝트 빌드, 자세한 실행 방법 명시
+    - 구현 방법과 이유에 대한 간략한 설명
+    - 완료된 시스템이 배포된 서버의 주소
+    - Swagger나 Postman을 통한 API 테스트할때 필요한 상세 방법
+    - 해당 과제를 진행하면서 회고 내용 블로그 포스팅
+- Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
+
+</br>
+
+
+### [개발 요구사항]
+
+**✔️ API 목록**
+- 거래내역 조회 API
+- 입금 API
+- 출금 API
+
+
+<details><summary>[고려 사항]</summary>
+  **✔️ 주요 고려 사항은 다음과 같습니다.**
+
+---
+
+- 계좌의 잔액을 별도로 관리해야 하며, 계좌의 잔액과 거래내역의 잔액의 무결성의 보장
+- DB를 설계 할때 각 칼럼의 타입과 제약
+
+**✔️ 구현하지 않아도 되는 부분은 다음과 같습니다.**
+
+---
+
+- 문제와 관련되지 않은 부가적인 정보. 예를 들어 사용자 테이블의 이메일, 주소, 성별 등
+- 프론트앤드 관련 부분
+
+**✔️  제약사항은 다음과 같습니다.**
+
+---
+
+- (**8퍼센트가 직접 로컬에서 실행하여 테스트를 원하는 경우를 위해**) 테스트의 편의성을 위해 mysql, postgresql 대신 sqllite를 사용해 주세요.
+</div>
+</details>
+
+<br>
+
+
+**✔️  상세설명**
+
+**1)** 거래내역 조회 **API**
+
+- 아래와 같은 조회 화면에서 사용되는 API를 고려하시면 됩니다.
+    <img src="https://lh6.googleusercontent.com/PdtI4YvVu3biJ0TyEGCHVrR0fAPOQsILYHEczQHmR3UMKEINxlIjjp_-3gOGu5yGh3YXpxbegNYqNCEosUosq3nKRTMpte6ZiRUccX8iRlD5rxLJ1HWFy6E2HcMFMIMGZO7eVQl5" height=400 width=600>
+   
+    
+
+거래내역 API는 다음을 만족해야 합니다.
+
+- 계좌의 소유주만 요청 할 수 있어야 합니다.
+- 거래일시에 대한 필터링이 가능해야 합니다.
+- 출금, 입금만 선택해서 필터링을 할 수 있어야 합니다.
+- Pagination이 필요 합니다.
+- 다음 사항이 응답에 포함되어야 합니다.
+    - 거래일시
+    - 거래금액
+    - 잔액
+    - 거래종류 (출금/입금)
+    - 적요
+
+---
+
+**2)** 입금 **API**
+
+입금 API는 다음을 만족해야 합니다.
+
+- 계좌의 소유주만 요청 할 수 있어야 합니다.
+
+---
+
+**3)** 출금 **API**
+
+출금 API는 다음을 만족해야 합니다.
+
+- 계좌의 소유주만 요청 할 수 있어야 합니다.
+- 계좌의 잔액내에서만 출금 할 수 있어야 합니다. 잔액을 넘어선 출금 요청에 대해서는 적절한 에러처리가 되어야 합니다.
+
+---
+
+**4)** 가산점
+
+다음의 경우 가산점이 있습니다.
+
+- Unit test의 구현
+- Functional Test 의 구현 (입금, 조회, 출금에 대한 시나리오 테스트)
+- 거래내역이 1억건을 넘어갈 때에 대한 고려
+    - 이를 고려하여 어떤 설계를 추가하셨는지를 README에 남겨 주세요.
+
+
+</br>
+</br>
+
+## 📕 모델링
+
+</br>
+
+![8퍼센트ERD](https://user-images.githubusercontent.com/48472537/141442936-320c7f6b-199f-4baf-bae4-9447c28bbc52.png)
+
+</br>
+</br>
+
+## 📕 작업 효율 개선 방안
+
+- Node.js, express, Sequelize, sqlLite, 회원가입 로그인 API, 거래내역 조회 API, 입금/출금API, 계좌생성 API를 구현하였습니다.
+- 인증, 인가를 위해 JWT와 쿠키를 활용했습니다.
+- 코드 컨벤션, 커밋 컨벤션, Git Flow를 지켜가며 작업했습니다.
+- Github Project, 마일스톤을 활용해서 백로그, 이슈 관리를 진행했습니다.
+- 계층 분리를 통해 코드의 가독성을 높였습니다.
+- 리팩토링을 통해 가독성을 높이고, 유지보수를 편하게 하기 위해 노력 했습니다.
+
+</br>
+</br>
+
+## 💡 구현 기능
+
+### [ 회원가입, 로그인 ]
+
+- 인증방식은 JWT를 쿠키에 저장하는 방식으로 구현 하였습니다.
+
+<br>
+
+### [ 입출금 API ]
+
+- 계좌 소유주만 요청 할 수 있게 구현 하였습니다.
+- 계좌의 잔액 내에서만 출금 할 수 있고, 잔액을 넘어선 출금 요청에 대해서는 적절한 에러처리를 하였습니다.
+
+
+<br>
+
+
+### [ 거래내역 조회 API ]
+
+- 계좌의 소유주만 요청 할 수 있게 구현하였고, Pagination기능을 구현 하였습니다.
+- 거래 일시에 대한 필터링이 가능하게 구현 하였습니다.
+- 출금, 입금만 선택하여 필터링 될수 있게 구현 하였습니다.
+
+<br>
+
+
+### [ 에러 핸들링 ]
+
+- 자바스크립트 자체 내장 Error 클래스를 상속 받아서, 커스텀 에러를 생성해서 관리했습니다.
+
+
+<br>
+<br>
+
+## ➕ 협업을 위한 노력
+
+- 구성원들의 전체 의견을 반영하여 API 명세와 DB모델을 구축 하였습니다.
+- 긴밀하게 소통하여, 신속하게 문제를 인식하고, 신속하게 해결 하기 위해 노력 하였습니다.
+- 전체 작업을 도메인 단위로 분리하여 구성원 간의 병목현상을 줄였습니다.
+
+</br>
+</br>
+
+
+## 🛠 실행 방법
+
+- 레포지토리를 clone 받거나, 압축을 해제한 후 npm install을 통해 환경 셋팅을 진행합니다.
+- npm start를 통해 서버를 구동합니다.
+- src 폴더에 .env 파일을 설정해서, 환경변수를 설정합니다.
+- npm start로 서버를 구동시키고, npm test를 입력하면 단위 테스트가 가능합니다.
+- [.env설정 노션 링크](https://www.notion.so/pre-onboarding15/73fe2b59ebe44a6ea1976ac9cc8c2c7c?v=5acf15e5e8e44b1093d5432a61b50c9c)
+  - <details><summary><b>링크 접속불가 시 .env 파일 설정 방법</b></summary>
+
+    ```
+    PORT= '서버의 포트'
+    JWT_SECERT= '원하는 시크릿코드'
+    JWT_ALGO="HS256"
+    ADMIN_USER="test@naver.com"
+    ADMIN_PASSWORD="1234"
+    HOST="http://localhost:4000"
+    IS_SQLLITE=true
+    ```
+
+
+</details>
+
+
+</br>
+</br>
+
+
+## 🗂 과제 확인 및 평가 API 명세서
+
+- Postman을 활용하여 API 작동 테스트를 진행했습니다. 
+- __배포된 서버 주소__ 및 자세한 API 명세는 아래에서 확인 가능합니다.
+- [🗂 API Description Link](https://documenter.getpostman.com/view/15698210/UVC5F7jC)
+- [![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/15698210/UVC5F7jC) 을 클릭하여 웹브라우저 혹은 Postman 클라이언트에 콜렉션이 로드되면
+   1. Variables 탭에서 서버 Host와 Port를 지정합니다. (기본값이 지정되어 있습니다.
+   2. Variables 탭에서 테스트하는 동안 사용할 username과 password 그리고 newProjectName을 지정합니다. (기본값이 지정되어 있습니다.)
+   3. 그후 우측 상단의 Run 버튼을 눌러 RUN ORDER 화면에 진입한 뒤 Run \[Collection Name\]을 클릭하면, 이상적인 상황에서의 테스트가 진행됩니다.
+    <img src = "https://user-images.githubusercontent.com/32833404/140971968-5bbe1a9a-5dd4-43a4-80f5-54f36146cabf.jpg">
+       
+   4. 좌측의 Workspace 화면에서 해당 콜렉션과 그 요청에는 여러 이상적이지 않은 상황의 테스트에 대한 예시가 있습니다.</br>
+    <img src ="https://user-images.githubusercontent.com/32833404/140972241-79be0bbf-d147-4a71-981c-d6b797b13901.png">
+
+        **유의사항**
+        *일부 요청의 경우 JWT를 필요로합니다. JWT는 로그인 과정에서 "Set-Cookie" 헤더를 통해 클라이언트가 스스로 관리하게끔 전달됩니다.
+        *프로젝트 등록 과정에서 콜렉션 Variable의 projectId를 자동으로 수정합니다. 이를 원치 않는다면 해당 요청의 Test Script에서 지워주세요
+ 
+ 
+</br>
+</br>
+
+
+## 😎 컨벤션 설정
+
+- [👏🏻 협업을 위한 코드 컨벤션 설정하기](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)
+
+- [👏🏻 Prettier, ESLint, Airbnb Style Guide로 코드 컨벤션  설정하기](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-ESLint-Prettier-Airbnb-Style-Guide%EB%A1%9C-%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0?category=911197)
+
+- [👏🏻 협업을 위한 git 커밋 컨벤션 설정하기](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-git-%EC%BB%A4%EB%B0%8B%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0?category=911197)
+
+- [👏🏻 협업을 위한 Git Flow 설정하기](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-Git-Flow-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0?category=911197)
+
+- [👏🏻 협업을 위한 Git 명령어 가이드](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-Git-%EB%AA%85%EB%A0%B9%EC%96%B4-%EA%B0%80%EC%9D%B4%EB%93%9C?category=911197) 
+
+</br>
+</br>
+
+
+## 🛠 Dependencies
+
+</br>
+
+<div align=center>
+<img src="https://user-images.githubusercontent.com/59385491/140954041-f43eed69-5bb5-4cac-a7c8-9a1c70afb649.png" height=850>
+</div>
+
+
+</br>
+</br>
+
+
+## 🌲 File Tree
+
+</br>
+
+
+```
+
+📦src
+ ┣ 📂bin
+ ┃ ┗ 📜www.js
+ ┃
+ ┣ 📂configs
+ ┃ ┣ 📜db.js
+ ┃ ┣ 📜index.js
+ ┃ ┗ 📜secretKey.js
+ ┃
+ ┣ 📂controllers
+ ┃ ┣ 📜accountController.js
+ ┃ ┣ 📜transactionController.js
+ ┃ ┗ 📜userController.js
+ ┃
+ ┣ 📂globals
+ ┃ ┣ 📜index.js
+ ┃ ┣ 📜responseMessage.js
+ ┃ ┣ 📜routes.js
+ ┃ ┗ 📜statusCode.js
+ ┃
+ ┣ 📂libs
+ ┃ ┣ 📜encryption.js
+ ┃ ┗ 📜jwt.js
+ ┃
+ ┣ 📂middlewares
+ ┃ ┗ 📜auth.js
+ ┃
+ ┣ 📂models
+ ┃ ┣ 📜account.js
+ ┃ ┣ 📜index.js
+ ┃ ┣ 📜transaction.js
+ ┃ ┗ 📜user.js
+ ┃
+ ┣ 📂routes
+ ┃ ┣ 📜accountRouter.js
+ ┃ ┣ 📜globalRouter.js
+ ┃ ┣ 📜index.js
+ ┃ ┗ 📜userRouter.js
+ ┃
+ ┣ 📂services
+ ┃ ┣ 📜accountService.js
+ ┃ ┣ 📜transactionService.js
+ ┃ ┗ 📜userService.js
+ ┃
+ ┣ 📂test
+ ┃ ┣ 📂data
+ ┃ ┃ ┗ 📂dto
+ ┃ ┃   ┗ 📜signup.json
+ ┃ ┣ 📂unit
+ ┃ ┃ ┗ 📂controllers
+ ┃ ┃   ┗ 📂userController
+ ┃ ┃     ┣ 📜postToken.test.js
+ ┃ ┃     ┗ 📜postUser.test.js
+ ┃
+ ┣ 📂utils
+ ┃ ┣ 📂errors
+ ┃ ┃ ┣ 📜commonError.js
+ ┃ ┃ ┣ 📜errors.js
+ ┃ ┃ ┣ 📜transactionError.js
+ ┃ ┃ ┗ 📜userError.js
+ ┃ ┣ 📜index.js
+ ┃ ┣ 📜logger.js
+ ┃ ┗ 📜resFormatter.js
+ ┣ 📜.env
+ ┣ 📜.eslintrc.json
+ ┣ 📜.gitignore
+ ┣ 📜.prettierrc.json
+ ┣ 📜app.js
+ ┣ 📜database.db
+ ┣ 📜package-lock.json
+ ┗ 📜package.json
+
+```
