@@ -11,10 +11,9 @@ const models = require('../models');
 exports.signup = async (userId, encryptPassword, salt) => {
   try {
     const newUser = await models.user.create({
-      id:userId,
+      id: userId,
       password: encryptPassword,
       salt,
-      isAdmin,
     });
     return newUser;
   } catch (err) {
@@ -30,9 +29,9 @@ exports.signup = async (userId, encryptPassword, salt) => {
 exports.checkUser = async userId => {
   try {
     const alreadyUser = await models.user.findOne({
-      where:{
-        id:userId,
-      }
+      where: {
+        id: userId,
+      },
     });
     return alreadyUser;
   } catch (err) {
@@ -50,7 +49,7 @@ exports.signin = async (userId, password) => {
   try {
     const user = await models.user.findOne({
       where: {
-        id:userId,
+        id: userId,
         password,
       },
     });
