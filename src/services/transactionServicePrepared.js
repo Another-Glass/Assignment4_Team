@@ -83,10 +83,6 @@ const orderBy = (direction) => {
     return `ORDER BY id ${direction}`
 }
 
-
-
-
-
 /**
  * data : {
  *  accountNumber : ,         // 요청 계좌
@@ -109,14 +105,11 @@ const orderBy = (direction) => {
 
 module.exports.prepares = (data) => {
 
-
     var subQueries = accountFiltered('SELECT * FROM transactions', data.accountNumber)
-
 
     if (data.type == "deposit" || data.type == "withdraw") {
         subQueries = typeFiltered(subQueries, data.type)
-    }
-    
+    }    
 
     if (data.lastIndex) {                                                           //지난 조회값이 존재한다고 할때,
         var isSameAccount = data.lastIndex && (data.accountNumber
