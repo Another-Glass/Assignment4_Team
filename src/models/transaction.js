@@ -34,7 +34,11 @@ module.exports = (sequelize, DataTypes) => {
 
   transaction.associate = function (models) {
     models.transaction.belongsTo(models.account, {
-      foreignKey: 'accountId'
+      foreignKey: {
+        name: "accountNumber", 
+        allowNull:false
+      },
+      onUpdate: 'CASCADE'
     });
   };
 
