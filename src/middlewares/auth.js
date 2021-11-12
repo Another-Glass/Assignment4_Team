@@ -41,8 +41,6 @@ exports.checkToken = async (req, res, next) => {
         if (userDB == undefined) {
             throw new NotMatchedUserError();
         }
-        console.log(userDB);
-
         req.decoded = user;
         next();
     } catch (err) {
