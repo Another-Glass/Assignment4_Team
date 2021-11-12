@@ -1,6 +1,6 @@
 <div align="center">
 
-  # 원티드 백엔드 프리온보딩 3차 과제 - 레드브릭
+  # 원티드 백엔드 프리온보딩 4차 과제 - 8퍼센트
 
   <img height="400" width="700" src="https://user-images.githubusercontent.com/59385491/139865333-05dabf0a-e283-4e51-94d9-8a42e6acbb7b.jpeg">
 
@@ -31,9 +31,9 @@
 
 ## 🎤 소개
 
-이 레포지토리는 [원티드 프리온보딩 백엔드 코스](https://www.wanted.co.kr/events/pre_onboarding_course_4) 3차 과제를 위해 만들어졌습니다. 
+이 레포지토리는 [원티드 프리온보딩 백엔드 코스](https://www.wanted.co.kr/events/pre_onboarding_course_4) 4차 과제를 위해 만들어졌습니다. 
 
--   일정 : 2021년 11월 8일(월) 오후 6시 ~ 11월 10일(수) 오전 10시
+-   일정 : 2021년 11월 11일(목) 오후 6시 ~ 11월 13일(토) 오전 10시
 
 <br>
 <br>
@@ -46,8 +46,8 @@
 |:-----:|:-----:|:-----: |
 |  <img src="https://avatars.githubusercontent.com/u/59385491?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/38933716?v=4" height=200 width=200> |<img src="https://avatars.githubusercontent.com/u/67402180?v=4" height=200 width=200>  |
 | **blog**: [Plus Ultra](https://overcome-the-limits.tistory.com/) </br> **github**: [epitone](https://github.com/epitoneproject)| **blog**: [sudocorp](https://sudocorp.tistory.com/) </br> **github**: [SibaDoge1](https://github.com/SibaDoge1)| **blog**: [raejun92.log](https://velog.io/@raejun92) </br> **github**: [raejun92](https://github.com/raejun92)
-| ![sprint3](https://img.shields.io/badge/wanted-sprint3-orange) |![sprint3](https://img.shields.io/badge/wanted-sprint3-orange)  | ![sprint3](https://img.shields.io/badge/wanted-sprint3-orange) |
-| 실시간 저장 소켓 이벤트 | 실시간 저장 소켓 이벤트, DevOps | 퍼블리싱 관련 DB / API |
+| ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |![sprint4](https://img.shields.io/badge/wanted-sprint4-purple)  | ![sprint4](https://img.shields.io/badge/wanted-sprint3-purple) |
+| 유저 & 계좌생성 API, DB / Test   | 입출금 API, DB / DevOps | 거래내역 API, DB |
 | [프로젝트 회고](https://overcome-the-limits.tistory.com/entry/%ED%9A%8C%EA%B3%A0-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-3%EC%B0%A8-%EA%B3%BC%EC%A0%9C?category=980007) | [프로젝트 회고](https://sudocorp.tistory.com/4) | [프로젝트 회고]()
 
 <br>
@@ -57,8 +57,8 @@
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://avatars.githubusercontent.com/u/32833404?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/48472537?v=4" height=200 width=200> | <img src="https://avatars.githubusercontent.com/u/68373235?v=4" height=200 width=200> |
 | **blog**: [Makkiato](https://makkiato.tistory.com) </br> **github**: [Makkiato](https://github.com/Makkiato) | **blog**: [gusrlf14](https://velog.io/@gusrlf14) </br> **github**: [hyunghilkim](https://github.com/hyunghilkim) | **blog**: [dongjay00.log](https://velog.io/@dongjay00) </br> **github**: [dongjay00](https://github.com/dongjay00) |
-| ![sprint3](https://img.shields.io/badge/wanted-sprint3-orange) | ![sprint3](https://img.shields.io/badge/wanted-sprint3-orange) | ![sprint2](https://img.shields.io/badge/wanted-sprint3-orange) |
-|                     프로젝트 관련 DB / API                     |                             프로젝트 관련 DB                              |                              퍼블리싱 관련 DB / API                              |
+| ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) | ![sprint4](https://img.shields.io/badge/wanted-sprint4-purple) |
+|                    거래내역 API, DB                      |                             입출금 API, DB                              |                              유저 & 계좌생성 API, DB / Test                              |
 |                      [프로젝트 회고]()                       |                      [프로젝트 회고]()                       | [프로젝트 회고]() |
 
 
@@ -72,27 +72,99 @@
 
 ### [필수 포함 사항]
 
-- Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
-- README 작성
+- READ.ME 작성
     - 프로젝트 빌드, 자세한 실행 방법 명시
     - 구현 방법과 이유에 대한 간략한 설명
     - 완료된 시스템이 배포된 서버의 주소
     - Swagger나 Postman을 통한 API 테스트할때 필요한 상세 방법
     - 해당 과제를 진행하면서 회고 내용 블로그 포스팅
+- Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
 
 </br>
 
 
 ### [개발 요구사항]
 
-- 회원가입
-- 게임 제작하기 
-  - 제작 중 단계의 게임을 '프로젝트'
-  - 프로젝트는 "실시간"으로 반영
-- 게임 출시하기
-  - 프로젝트 당 퍼블리싱 할 수 있는 개수는 하나입니다. 퍼블리싱한 게임은 수정할 수 있어야 하며, 수정 후 재출시시 기존에 퍼블리싱된 게임도 수정
-  - 출시하는 게임은 다른 사용자들도 볼 수 있으며, 사용자들의 조회수 / 좋아요 등을 기록 가능
-  - 게임 혹은 사용자 검색'을 통해서 찾기 가능
+**✔️ API 목록**
+- 거래내역 조회 API
+- 입금 API
+- 출금 API
+
+
+<details><summary>[고려 사항]</summary>
+  **✔️ 주요 고려 사항은 다음과 같습니다.**
+
+---
+
+- 계좌의 잔액을 별도로 관리해야 하며, 계좌의 잔액과 거래내역의 잔액의 무결성의 보장
+- DB를 설계 할때 각 칼럼의 타입과 제약
+
+**✔️ 구현하지 않아도 되는 부분은 다음과 같습니다.**
+
+---
+
+- 문제와 관련되지 않은 부가적인 정보. 예를 들어 사용자 테이블의 이메일, 주소, 성별 등
+- 프론트앤드 관련 부분
+
+**✔️  제약사항은 다음과 같습니다.**
+
+---
+
+- (**8퍼센트가 직접 로컬에서 실행하여 테스트를 원하는 경우를 위해**) 테스트의 편의성을 위해 mysql, postgresql 대신 sqllite를 사용해 주세요.
+</div>
+</details>
+
+<br>
+
+**✔️  상세설명**
+
+**1)** 거래내역 조회 **API**
+
+- 아래와 같은 조회 화면에서 사용되는 API를 고려하시면 됩니다.
+    <img src="https://lh6.googleusercontent.com/PdtI4YvVu3biJ0TyEGCHVrR0fAPOQsILYHEczQHmR3UMKEINxlIjjp_-3gOGu5yGh3YXpxbegNYqNCEosUosq3nKRTMpte6ZiRUccX8iRlD5rxLJ1HWFy6E2HcMFMIMGZO7eVQl5" height=400 width=600>
+   
+    
+
+거래내역 API는 다음을 만족해야 합니다.
+
+- 계좌의 소유주만 요청 할 수 있어야 합니다.
+- 거래일시에 대한 필터링이 가능해야 합니다.
+- 출금, 입금만 선택해서 필터링을 할 수 있어야 합니다.
+- Pagination이 필요 합니다.
+- 다음 사항이 응답에 포함되어야 합니다.
+    - 거래일시
+    - 거래금액
+    - 잔액
+    - 거래종류 (출금/입금)
+    - 적요
+
+---
+
+**2)** 입금 **API**
+
+입금 API는 다음을 만족해야 합니다.
+
+- 계좌의 소유주만 요청 할 수 있어야 합니다.
+
+---
+
+**3)** 출금 **API**
+
+출금 API는 다음을 만족해야 합니다.
+
+- 계좌의 소유주만 요청 할 수 있어야 합니다.
+- 계좌의 잔액내에서만 출금 할 수 있어야 합니다. 잔액을 넘어선 출금 요청에 대해서는 적절한 에러처리가 되어야 합니다.
+
+---
+
+**4)** 가산점
+
+다음의 경우 가산점이 있습니다.
+
+- Unit test의 구현
+- Functional Test 의 구현 (입금, 조회, 출금에 대한 시나리오 테스트)
+- 거래내역이 1억건을 넘어갈 때에 대한 고려
+    - 이를 고려하여 어떤 설계를 추가하셨는지를 README에 남겨 주세요.
 
 
 </br>
@@ -112,21 +184,29 @@
 
 ## 💡 구현 기능
 
-### [회원가입, 로그인]
+### [ 회원가입, 로그인 ]
 
 - 인증방식은 JWT를 쿠키에 저장하는 방식으로 구현 하였습니다.
 
 <br>
 
-### [ 조회수 수정, 좋아요 API]
+### [ 계좌생성 API ]
 
-- 프로젝트 당 배포 할수 있는 개수는 하나로 구현하고, 배포한 게임은 수정 가능, 수정 후 재배포시 기존 배포된 프로젝트도 수정 가능하게 기능 구현 하였습니다.
+- 계좌생성에 대한 이야기 작성
 
 <br>
 
-### [ 게임 혹은 사용자로 검색 API]
+### [ 입출금 API ]
 
-- 게임(프로젝트명) 또는 사용자를 키워드로 하여 검색이 가능하게 기능 구현 하였습니다.
+- 입출금 API 작성
+
+<br>
+
+
+### [ 거래내역 조회 API ]
+
+- 거래 내역 API 작성
+
 
 <br>
 
@@ -134,12 +214,6 @@
 
 - 자바스크립트 자체 내장 Error 클래스를 상속 받아서, 커스텀 에러를 생성해서 관리했습니다.
 
-<br>
-
-### [게임 제작 API]
-
-- 기존의 RestFul Api 설계의 경우, 실시간 저장이라는 개념이 성립할 수 없었습니다. 어쩔 수 없이 게임을 제작하는 사용자부분은 __브라우저__ 를 이용한 가상의 게임제작 페이지를 사용하기로 하였습니다. 
-- socket.io를 이용하여 서버와 클라이언트간의 실시간 연결을 유지하고, 게임 프로젝트 데이터의 변경 시 데이터를 서버에 저장합니다.
 
 <br>
 <br>
@@ -195,11 +269,10 @@
 - npm start를 통해 서버를 구동합니다.
 - src 폴더에 .env 파일을 설정해서, 환경변수를 설정합니다.
 - npm start로 서버를 구동시키고, npm test를 입력하면 단위 테스트가 가능합니다.
-- [.env설정 노션 링크](https://www.notion.so/pre-onboarding15/750e9c9bd84f49bda72146b46a77923a)
+- [.env설정 노션 링크](https://www.notion.so/pre-onboarding15/8-3fe38392fa5841ebad5fa99306f0205a)
   - <details><summary><b>링크 접속불가 시 .env 파일 설정 방법</b></summary>
 
     ```
-    MONGO_URL= 'db 주소'
     PORT= '서버의 포트'
     JWT_SECERT= '원하는 시크릿코드'
     JWT_ALGO="HS256"
@@ -284,53 +357,62 @@
 📦src
  ┣ 📂bin
  ┃ ┗ 📜www.js
+ ┃
  ┣ 📂configs
  ┃ ┣ 📜db.js
  ┃ ┣ 📜index.js
  ┃ ┗ 📜secretKey.js
+ ┃
  ┣ 📂controllers
- ┃ ┣ 📜gameController.js
- ┃ ┣ 📜projectController.js
+ ┃ ┣ 📜accountController.js
+ ┃ ┣ 📜transactionController.js
  ┃ ┗ 📜userController.js
+ ┃
  ┣ 📂globals
  ┃ ┣ 📜index.js
  ┃ ┣ 📜responseMessage.js
  ┃ ┣ 📜routes.js
  ┃ ┗ 📜statusCode.js
+ ┃
  ┣ 📂libs
  ┃ ┣ 📜encryption.js
- ┃ ┣ 📜jwt.js
- ┃ ┗ 📜serverSocket.js
+ ┃ ┗ 📜jwt.js
+ ┃
  ┣ 📂middlewares
  ┃ ┗ 📜auth.js
+ ┃
  ┣ 📂models
+ ┃ ┣ 📜account.js
  ┃ ┣ 📜index.js
- ┃ ┣ 📜likeModel.js
- ┃ ┣ 📜projectModel.js
- ┃ ┣ 📜releaseModel.js
- ┃ ┗ 📜userModel.js
- ┣ 📂public
- ┃ ┣ 📂js
- ┃ ┃ ┗ 📜clientSocket.js
- ┃ ┗ 📜gameEditor.html
+ ┃ ┣ 📜transaction.js
+ ┃ ┗ 📜user.js
+ ┃
  ┣ 📂routes
- ┃ ┣ 📜gameRouter.js
+ ┃ ┣ 📜accountRouter.js
  ┃ ┣ 📜globalRouter.js
  ┃ ┣ 📜index.js
- ┃ ┣ 📜projectRouter.js
- ┃ ┣ 📜tokenRouter.js
  ┃ ┗ 📜userRouter.js
+ ┃
  ┣ 📂services
- ┃ ┣ 📜gameService.js
- ┃ ┣ 📜projectService.js
+ ┃ ┣ 📜accountService.js
+ ┃ ┣ 📜transactionService.js
  ┃ ┗ 📜userService.js
+ ┃
+ ┣ 📂test
+ ┃ ┣ 📂data
+ ┃ ┃ ┗ 📂dto
+ ┃ ┃   ┗ 📜signup.json
+ ┃ ┣ 📂unit
+ ┃ ┃ ┗ 📂controllers
+ ┃ ┃   ┗ 📂userController
+ ┃ ┃     ┣ 📜postToken.test.js
+ ┃ ┃     ┗ 📜postUser.test.js
+ ┃
  ┣ 📂utils
- ┃ ┣ 📂db
- ┃ ┃ ┗ 📜index.js
  ┃ ┣ 📂errors
  ┃ ┃ ┣ 📜commonError.js
  ┃ ┃ ┣ 📜errors.js
- ┃ ┃ ┣ 📜gameError.js
+ ┃ ┃ ┣ 📜transactionError.js
  ┃ ┃ ┗ 📜userError.js
  ┃ ┣ 📜index.js
  ┃ ┣ 📜logger.js
@@ -340,6 +422,7 @@
  ┣ 📜.gitignore
  ┣ 📜.prettierrc.json
  ┣ 📜app.js
+ ┣ 📜database.db
  ┣ 📜package-lock.json
  ┗ 📜package.json
 
