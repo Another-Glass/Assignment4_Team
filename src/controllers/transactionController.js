@@ -5,6 +5,7 @@ const accountService = require('../services/accountService.js');
 const logger = require('../utils/logger');
 const encryption = require("../libs/encryption.js")
 const { EntityNotExistError, ValidationError, UnAuthorizedError } = require('../utils/errors/commonError');
+const { PasswordMissMatchError } = require('../utils/errors/userError');
 
 
 /* "type":"in",
@@ -19,13 +20,19 @@ exports.postTransaction = async (req, res, next) => {
         const accountNumber = req.params.accountNumber;
         const { type, transactionAmount, briefs, accountPassword } = req.body;
 
-        //계좌 비밀번호 대조
-        //accountPassword
+        // 비밀번호가 일치 하지 않으면 에러처리 
+        const { salt, password: realPassword } =  await accountService.readAccountPassword({accountNumber});
+        const inputPassword = encryption.encrypt(String(accountPassword), salt);
 
-        // 소유주가 아니면 에러처리
+        // 패스워드 불일치
+        if (inputPassword !== realPassword)
+            throw new PasswordMissMatchError();
+        
+        // 토큰이 유효하지 않으면 에러처리
         if (userId === undefined) 
             throw new UnAuthorizedError();
 
+        // 입력값이 잘 들어오지 않는다면 에러처리
         if (type === undefined || transactionAmount === undefined || briefs === undefined
             || accountPassword === undefined || accountNumber === undefined)
             throw new ValidationError();
@@ -38,11 +45,7 @@ exports.postTransaction = async (req, res, next) => {
             case "withdraw": resMessage = responseMessage.WITHDRAW_SUCCESS; rawType = 1;  break;
             default: throw new ValidationError();
         }
-
-        const account = await accountService.findAccountByPk({ accountNumber })
-        if (account === undefined) 
-            throw new EntityNotExistError();
-
+        
         const transactionData = {
             accountNumber,
             transactionAmount,
@@ -63,10 +66,11 @@ exports.postTransaction = async (req, res, next) => {
 }
 
 
-//계좌 조회
+//거래내역 조회
 exports.getTransaction = async (req, res, next) => {
     try {
-        const accountNumber = req.params.accountNumber;
+       
+        
     }
     catch (err) {
         next(err);

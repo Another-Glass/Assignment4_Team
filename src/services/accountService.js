@@ -25,6 +25,20 @@ exports.createAccount = async (data) => {
 //data.accountNumber
 //return {password, salt}
 exports.readAccountPassword = async (data) => {
+  try {
+    const account = await models.account.findByPk(data.accountNumber, {
+      raw: true
+    });
+
+    if (account == undefined) throw new EntityNotExistError();
+
+    return {
+      password: account.password,
+      salt: account.salt
+    };
+  } catch (err) {
+    throw err;
+  }
 
 }
 
