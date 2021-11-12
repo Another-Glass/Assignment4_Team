@@ -53,19 +53,16 @@ const dateFilter = (tableName, begin, end) => {
     let beginStatement
     let endStatement
     if (begin) {
-        beginStatement = `${tableName}.transactionDate >= ${process.env.IS_SQLLITE? `datetime("${begin}")` : `TIMESTAMP("${begin}"`})`
+        beginStatement = `${tableName}.transactionDate >= ${process.env.IS_SQLLITE ? `datetime("${begin}")` : `TIMESTAMP("${begin}"`})`
     } else {
         beginStatement = undefined
     }
 
     if (end) {
-        endStatement = `${tableName}.transactionDate < ${process.env.IS_SQLLITE? `datetime("${end}")` : `TIMESTAMP("${end}")`}`
+        endStatement = `${tableName}.transactionDate < ${process.env.IS_SQLLITE ? `datetime("${end}")` : `TIMESTAMP("${end}")`}`
     } else {
         endStatement = undefined
     }
-    console.log("begin and end")
-    console.log(beginStatement)
-    console.log(endStatement)
 
     if (beginStatement && endStatement) {
         return `WHERE ${beginStatement} AND ${endStatement}`
@@ -89,55 +86,62 @@ const orderBy = (direction) => {
 
 
 
+
 /**
  * data : {
- *  accountNumber : ,
- *  begin : ,
- *  end : ,
- *  type : ,
- *  order : ,
- *  page : ,
+ *  accountNumber : ,         // 요청 계좌
+ *  begin : ,                 // 검색 시작 시점
+ *  end : ,                   // 검색 종료 시점
+ *  type : ,                  // 입,출금 혹은 전체 선택
+ *  order : ,                 // 오름차순, 내림차순
+ *  page : ,                  // 조회하고자 하는 page
  *  lastIndex : {
- *      value
- *      order
- * }
- * }
+ *          ${page} : {       // 이전 조회 요청 내용
+ *              accountNumber
+ *              begin
+ *              end
+ *              type
+ *              order
+ *          }
+ *  }
  */
 
 
 module.exports.prepares = (data) => {
 
-    console.log("building queries : ",data)
 
-    var subQueries = accountFiltered('SELECT * FROM transactions',data.accountNumber)
-    
+    var subQueries = accountFiltered('SELECT * FROM transactions', data.accountNumber)
 
-    if(data.type == "deposit" || data.type == "withdraw"){
-        subQueries = typeFiltered(subQueries,data.type)
+
+    if (data.type == "deposit" || data.type == "withdraw") {
+        subQueries = typeFiltered(subQueries, data.type)
     }
-
-    var key = Object.keys(data.lastIndex).find(ele => ele == data.page-1)
-
-    var isValidLastIndex= 
-        data.page != 1 &&   // 첫페이지를 조회하는게 아니고
-        data.lastIndex &&   // 이전에 다른페이지를 본적이 있으며
-        key                 // 그 페이지가 바로 이전 페이지라면
-
-    var isTypeSame =  
-        (!data.type && !data.lastIndex.type) ||  // 연속으로 입출금 내역을 다 뽑아보거나
-        (data.lastIndex.type && 
-        data.type.toUpperCase() == data.lastIndex.type.toUpperCase()) // 이전 내역이랑 똑같이 본다면
-
-    var isDateSame = 
-        ((!data.begin && !data.lastIndex.begin ) ||         //기간 시작점을 계속 지정하지 않거나
-        (data.lastIndex.begin == data.begin ))              //같은 기간 시작점을 지정하고,
-        &&   
-
-        ((!data.end && !data.lastIndex.end) ||              // 기간 끝점을 계속 지정하지 않거나
-        (data.lastIndex.end == data.end))                   // 같은 기간 끝점을 지정하면   
     
-    if(isValidLastIndex && isTypeSame && isDateSame){
-        subQueries = idFiltered(subQueries,data.lastIndex[key],data.order ?? "ASC")
+
+    if (data.lastIndex) {                                                           //지난 조회값이 존재한다고 할때,
+        var isSameAccount = data.lastIndex && (data.accountNumber
+            == data.lastIndex.accountNumber)                                        //같은 계좌를 조회하고
+
+        var isValidLastIndex =
+            data.page != 1 &&                                                       // 첫페이지를 조회하는게 아니고                                                           
+            data.page == data.lastIndex.page + 1                                    // 그 페이지가 바로 이전 페이지라면
+
+        var isTypeSame =
+            (!data.type && !data.lastIndex.type) ||                                 // 연속으로 입출금 내역을 다 뽑아보거나
+            (data.lastIndex.type &&
+                data.type.toUpperCase() == data.lastIndex.type.toUpperCase())       // 이전 내역이랑 똑같이 본다면
+
+        var isDateSame =
+            ((!data.begin && !data.lastIndex.begin) ||                              //기간 시작점을 계속 지정하지 않거나
+                (data.lastIndex.begin == data.begin))                               //같은 기간 시작점을 지정하고,
+            &&
+
+            ((!data.end && !data.lastIndex.end) ||                                  // 기간 끝점을 계속 지정하지 않거나
+                (data.lastIndex.end == data.end))                                   // 같은 기간 끝점을 지정하면   
+        
+        if (isSameAccount && isValidLastIndex && isTypeSame && isDateSame) {
+            subQueries = idFiltered(subQueries, data.lastIndex.value, data.order ?? "ASC")
+        }
     }
 
     let fullQuery = `
@@ -150,7 +154,7 @@ module.exports.prepares = (data) => {
         ${dateFilter("subQueries", data.begin, data.end)}  
         
         ${orderBy(data.order ?? "ASC")}
-        LIMIT ${data.limit ?? PAGE_SIZE_DEFAULT} ${isValidLastIndex ? "":`OFFSET ${(data.page - 1) * (data.limit ?? PAGE_SIZE_DEFAULT) ?? PAGE_OFFSET_DEFAULT}` };
+        LIMIT ${data.limit ?? PAGE_SIZE_DEFAULT} ${isValidLastIndex ? "" : `OFFSET ${(data.page - 1) * (data.limit ?? PAGE_SIZE_DEFAULT) ?? PAGE_OFFSET_DEFAULT}`};
     `
     return fullQuery
 }
